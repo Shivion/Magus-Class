@@ -1,0 +1,3 @@
+displayName = Magus Class
+author = Shivion
+version = 0.1

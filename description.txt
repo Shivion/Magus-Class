@@ -1,0 +1,1 @@
+Magus Class adds an alternate version of the mage class with a focus on area control.
