@@ -1,8 +1,10 @@
 # This file will automatically update with entries for new content after a build and reload
 
 Items: {
-	TestSword: {
-		DisplayName: Test Sword
-		Tooltip: ""
+	Vilethorn: {
+		DisplayName: Vilethorn
+		Tooltip: Magus's Vilethorn
 	}
-} 
+}
+
+Projectiles.VilethornSpawner.DisplayName: Vilethorn Spawner
