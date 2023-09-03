@@ -8,3 +8,10 @@ Items: {
 }
 
 Projectiles.VilethornSpawner.DisplayName: Vilethorn Spawner
+
+Buffs: {
+	VilethornBuff: {
+		DisplayName: Vilethorn Buff
+		Description: Mods.MagusClass.Buffs.VilethornBuff.Description
+	}
+}
