@@ -17,7 +17,6 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.Vilethorn);
-            Item.color = Color.Purple;
             Item.mana = 25;
             Item.damage = 5;
             Item.shoot = ModContent.ProjectileType<VilethornSpawner>();
