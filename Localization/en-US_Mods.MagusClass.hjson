@@ -5,13 +5,49 @@ Items: {
 		DisplayName: Vilethorn
 		Tooltip: Magus's Vilethorn
 	}
+
+	CrimsonRod: {
+		DisplayName: Crimson Rod
+		Tooltip: ""
+	}
+
+	WaterBolt: {
+		DisplayName: Water Bolt
+		Tooltip: ""
+	}
+
+	AquaScepter: {
+		DisplayName: Aqua Scepter
+		Tooltip: ""
+	}
 }
 
-Projectiles.VilethornSpawner.DisplayName: Vilethorn Spawner
+Projectiles: {
+	VilethornSpawner.DisplayName: Vilethorn Spawner
+	CrimsonRodCloud.DisplayName: Crimson Rod Cloud
+	CrimsonRodCloudSeed.DisplayName: Crimson Rod Cloud Seed
+	WaterBoltSpawner.DisplayName: Water Bolt Spawner
+	AquaScepterSpawner.DisplayName: Aqua Scepter Spawner
+}
 
 Buffs: {
 	VilethornBuff: {
 		DisplayName: Vilethorn Buff
 		Description: Vilethorn is active
+	}
+
+	CrimsonRodBuff: {
+		DisplayName: Crimson Rod Buff
+		Description: Mods.MagusClass.Buffs.CrimsonRodBuff.Description
+	}
+
+	WaterBoltBuff: {
+		DisplayName: Water Bolt Buff
+		Description: Mods.MagusClass.Buffs.WaterBoltBuff.Description
+	}
+
+	AquaScepterBuff: {
+		DisplayName: Aqua Scepter Buff
+		Description: Mods.MagusClass.Buffs.AquaScepterBuff.Description
 	}
 }
