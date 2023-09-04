@@ -20,6 +20,11 @@ Items: {
 		DisplayName: Aqua Scepter
 		Tooltip: ""
 	}
+
+	FlowerOfFire: {
+		DisplayName: Flower Of Fire
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -28,6 +33,7 @@ Projectiles: {
 	CrimsonRodCloudSeed.DisplayName: Crimson Rod Cloud Seed
 	WaterBoltSpawner.DisplayName: Water Bolt Spawner
 	AquaScepterSpawner.DisplayName: Aqua Scepter Spawner
+	FlowerOfFireSpawner.DisplayName: Flower Of Fire Spawner
 }
 
 Buffs: {
@@ -49,5 +55,10 @@ Buffs: {
 	AquaScepterBuff: {
 		DisplayName: Aqua Scepter Buff
 		Description: Mods.MagusClass.Buffs.AquaScepterBuff.Description
+	}
+
+	FlowerOfFireBuff: {
+		DisplayName: Flower Of Fire Buff
+		Description: Mods.MagusClass.Buffs.FlowerOfFireBuff.Description
 	}
 }

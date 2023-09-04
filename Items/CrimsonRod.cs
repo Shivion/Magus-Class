@@ -33,11 +33,6 @@ namespace MagusClass.Items
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int i = 0; i < Main.projectile.Length; i++)
-            {
-                
-            }
-
             // This is needed so the buff that keeps your spell alive and allows you to despawn it properly applies
             player.AddBuff(Item.buffType, 2);
             return true;
@@ -59,34 +54,33 @@ namespace MagusClass.Items
             Projectile.aiStyle = 0;
             AIType = ProjectileID.None;
         }
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.ai[0] = Main.mouseX + Main.screenPosition.X;
+            Projectile.ai[1] = Main.mouseY + Main.screenPosition.Y;
+            base.OnSpawn(source);
+        }
 
         public override void AI()
         {
             float x = Projectile.ai[0];
             float y = Projectile.ai[1];
-            if (x != 0f && y != 0f)
+
+            bool reachedX = false;
+            bool reachedY = false;
+            if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < x) || (Projectile.velocity.X > 0f && Projectile.Center.X > x))
             {
-                bool reachedX = false;
-                bool reachedY = false;
-                if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < x) || (Projectile.velocity.X > 0f && Projectile.Center.X > x))
-                {
-                    Projectile.velocity.X = 0f;
-                    reachedX = true;
-                }
-                if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > y))
-                {
-                    Projectile.velocity.Y = 0f;
-                    reachedY = true;
-                }
-                if (Projectile.owner == Main.myPlayer && reachedX && reachedY)
-                {
-                    Projectile.Kill();
-                }
+                Projectile.velocity.X = 0f;
+                reachedX = true;
             }
-            else
+            if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > y))
             {
-                Projectile.ai[0] = Main.mouseX + Main.screenPosition.X;
-                Projectile.ai[1] = Main.mouseY + Main.screenPosition.Y;
+                Projectile.velocity.Y = 0f;
+                reachedY = true;
+            }
+            if (Projectile.owner == Main.myPlayer && reachedX && reachedY)
+            {
+                Projectile.Kill();
             }
 
             Projectile.rotation += Projectile.velocity.X * 0.02f;

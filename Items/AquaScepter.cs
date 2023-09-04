@@ -1,8 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.Xna.Framework;
-using System.Diagnostics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Chat.Commands;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,6 +19,7 @@ namespace MagusClass.Items
             Item.mana = 50;
             Item.damage = 15;
             Item.useTime = 16;
+            Item.useStyle = 1;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<AquaScepterSpawner>();
             Item.buffType = ModContent.BuffType<AquaScepterBuff>();
