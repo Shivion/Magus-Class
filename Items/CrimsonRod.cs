@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Microsoft.CodeAnalysis;
 
 namespace MagusClass.Items
 {
@@ -16,8 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CrimsonRod);
-            Item.mana = 25;
-            Item.damage = 5;
+            Item.mana = 30;
+            Item.damage = 12;
             Item.shoot = ModContent.ProjectileType<CrimsonRodCloudSeed>();
             Item.buffType = ModContent.BuffType<CrimsonRodBuff>();
         }
@@ -143,9 +144,9 @@ namespace MagusClass.Items
                 }
             }
 
-            bool colliding = true;
+            bool notColliding = true;
             int centerX = (int)Projectile.Center.X;
-            int Y = (int)(Projectile.position.Y + (float)Projectile.height);
+            int BottomY = (int)(Projectile.position.Y + (float)Projectile.height);
 
             //Fade projectile to kill if ai[1] is 1
             if (Projectile.ai[1] == 1)
@@ -159,9 +160,9 @@ namespace MagusClass.Items
             }
 
             //check for collision
-            if (Collision.SolidTiles(new Vector2((float)centerX, (float)Y), 2, 20))
+            if (Collision.SolidTiles(new Vector2((float)centerX, (float)BottomY), 2, 20))
             {
-                colliding = false;
+                notColliding = false;
             }
             //animate cloud
             Projectile.frameCounter++;
@@ -169,13 +170,13 @@ namespace MagusClass.Items
             {
                 Projectile.frameCounter = 0;
                 Projectile.frame++;
-                if ((!colliding && Projectile.frame > 2) || Projectile.frame > 5)
+                if ((!notColliding && Projectile.frame > 2) || Projectile.frame > 5)
                 {
                     Projectile.frame = 0;
                 }
             }
-            //if its colliding summon rain?
-            else if (colliding)
+            //if its not colliding summon rain
+            else if (notColliding)
             {
                 Projectile.ai[0] += 1f;
                 if (Projectile.ai[0] > 10f)
@@ -184,7 +185,7 @@ namespace MagusClass.Items
                     if (Projectile.owner == Main.myPlayer)
                     {
                         centerX += Main.rand.Next(-14, 15);
-                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, Y, 0f, 5f, 245, Projectile.damage, 0f, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, BottomY, 0f, 5f, 245, Projectile.damage, 0f, Projectile.owner);
                     }
                 }
             }
@@ -221,7 +222,7 @@ namespace MagusClass.Items
             if (player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloud>()] > 0 || player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloudSeed>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= 25;
+                player.statManaMax2 -= 30;
             }
             else
             {
