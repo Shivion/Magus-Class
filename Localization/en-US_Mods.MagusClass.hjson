@@ -5,13 +5,27 @@ Items: {
 		DisplayName: Vilethorn
 		Tooltip: Magus's Vilethorn
 	}
+
+	CrimsonRod: {
+		DisplayName: Crimson Rod
+		Tooltip: ""
+	}
 }
 
-Projectiles.VilethornSpawner.DisplayName: Vilethorn Spawner
+Projectiles: {
+	VilethornSpawner.DisplayName: Vilethorn Spawner
+	CrimsonRodCloud.DisplayName: Crimson Rod Cloud
+	CrimsonRodCloudSeed.DisplayName: Crimson Rod Cloud Seed
+}
 
 Buffs: {
 	VilethornBuff: {
 		DisplayName: Vilethorn Buff
 		Description: Vilethorn is active
+	}
+
+	CrimsonRodBuff: {
+		DisplayName: Crimson Rod Buff
+		Description: Mods.MagusClass.Buffs.CrimsonRodBuff.Description
 	}
 }

@@ -32,25 +32,31 @@ namespace MagusClass.Items
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies
+            for (int i = 0; i < Main.projectile.Length; i++)
+            {
+                
+            }
+
+            // This is needed so the buff that keeps your spell alive and allows you to despawn it properly applies
             player.AddBuff(Item.buffType, 2);
-
-            Main.projectile[type].ai[0] = (float)Main.mouseX + Main.screenPosition.X;
-            Main.projectile[type].ai[1] = (float)Main.mouseY + Main.screenPosition.Y;
-
             return true;
         }
     }
+
     internal class CrimsonRodCloudSeed : ModProjectile
     {
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.BloodCloudMoving;
+
         public override void SetStaticDefaults()
         {
-
+            Main.projFrames[Projectile.type] = 4;
         }
 
         public override void SetDefaults()
         {
-
+            Projectile.CloneDefaults(ProjectileID.BloodCloudMoving);
+            Projectile.aiStyle = 0;
+            AIType = ProjectileID.None;
         }
 
         public override void AI()
@@ -73,10 +79,15 @@ namespace MagusClass.Items
                 }
                 if (Projectile.owner == Main.myPlayer && reachedX && reachedY)
                 {
-                    //Spawn the projectile here?
                     Projectile.Kill();
                 }
             }
+            else
+            {
+                Projectile.ai[0] = Main.mouseX + Main.screenPosition.X;
+                Projectile.ai[1] = Main.mouseY + Main.screenPosition.Y;
+            }
+
             Projectile.rotation += Projectile.velocity.X * 0.02f;
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 4)
@@ -89,18 +100,27 @@ namespace MagusClass.Items
                 }
             }
         }
+
+        public override void Kill(int timeLeft)
+        {
+            Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<CrimsonRodCloud>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            return;
+        }
     }
 
     internal class CrimsonRodCloud : ModProjectile
     {
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.BloodCloudRaining;
+
         public override void SetStaticDefaults()
         {
-
+            Main.projFrames[Projectile.type] = 6;
         }
 
         public override void SetDefaults()
         {
-
+            Projectile.CloneDefaults(ProjectileID.BloodCloudRaining);
+            Projectile.aiStyle = 0;
         }
 
         public override void AI()
@@ -109,7 +129,7 @@ namespace MagusClass.Items
             Projectile.ai[2]++;
             //Kill the older projectile
             Player player = Main.player[Projectile.owner];
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] > 1)
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloud>()] > 1)
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
@@ -158,25 +178,13 @@ namespace MagusClass.Items
             else if (colliding)
             {
                 Projectile.ai[0] += 1f;
-                if (Projectile.type == 244)
-                {
-                    if (Projectile.ai[0] > 10f)
-                    {
-                        Projectile.ai[0] = 0f;
-                        if (Projectile.owner == Main.myPlayer)
-                        {
-                            centerX += Main.rand.Next(-14, 15);
-                            Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, Y, 0f, 5f, 245, Projectile.damage, 0f, Projectile.owner);
-                        }
-                    }
-                }
-                else if (Projectile.ai[0] > 8f)
+                if (Projectile.ai[0] > 10f)
                 {
                     Projectile.ai[0] = 0f;
                     if (Projectile.owner == Main.myPlayer)
                     {
                         centerX += Main.rand.Next(-14, 15);
-                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, Y, 0f, 5f, 239, Projectile.damage, 0f, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, Y, 0f, 5f, 245, Projectile.damage, 0f, Projectile.owner);
                     }
                 }
             }
@@ -213,7 +221,7 @@ namespace MagusClass.Items
             if (player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloud>()] > 0 || player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloudSeed>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= player.ownedProjectileCounts[ModContent.ProjectileType<CrimsonRodCloud>()] * 25;
+                player.statManaMax2 -= 25;
             }
             else
             {

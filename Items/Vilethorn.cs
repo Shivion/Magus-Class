@@ -33,7 +33,7 @@ namespace MagusClass.Items
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies
+            // This is needed so the buff that keeps your spell alive and allows you to despawn it properly applies
             player.AddBuff(Item.buffType, 2);
             return true;
         }
@@ -41,6 +41,8 @@ namespace MagusClass.Items
 
     internal class VilethornSpawner : ModProjectile
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.Vilethorn;
+
         int spawnedProjectile;
         bool spawnPointSet;
         Vector2 spawnPoint;
@@ -132,7 +134,7 @@ namespace MagusClass.Items
             if (player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] * 25;
+                player.statManaMax2 -= 25;
             }
             else
             {
