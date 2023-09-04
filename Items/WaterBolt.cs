@@ -132,7 +132,7 @@ namespace MagusClass.Items
             if (player.ownedProjectileCounts[ModContent.ProjectileType<WaterBoltSpawner>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= 25;
+                player.statManaMax2 -= 50;
             }
             else
             {
