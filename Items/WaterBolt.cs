@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class Vilethorn : ModItem
+    public class WaterBolt : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -16,18 +16,18 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.Vilethorn);
-            Item.mana = 30;
-            Item.damage = 5;
-            Item.shoot = ModContent.ProjectileType<VilethornSpawner>();
-            Item.buffType = ModContent.BuffType<VilethornBuff>();
+            Item.CloneDefaults(ItemID.WaterBolt);
+            Item.mana = 50;
+            Item.damage = 10;
+            Item.shoot = ModContent.ProjectileType<WaterBoltSpawner>();
+            Item.buffType = ModContent.BuffType<WaterBoltBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Vilethorn);
-            recipe.AddTile(TileID.WorkBenches); 
+            recipe.AddIngredient(ItemID.WaterBolt);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
 
@@ -39,12 +39,8 @@ namespace MagusClass.Items
         }
     }
 
-    internal class VilethornSpawner : ModProjectile
+    internal class WaterBoltSpawner : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.Vilethorn;
-
-        int spawnedProjectile;
-
         public override void SetStaticDefaults()
         {
 
@@ -52,12 +48,8 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
-            //Vilethorns cast count
-            Projectile.ai[0] = 0;
-            spawnedProjectile = -1;
         }
 
         public override void AI()
@@ -66,7 +58,7 @@ namespace MagusClass.Items
             Projectile.ai[2]++;
             //Kill the older projectile
             Player player = Main.player[Projectile.owner];
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] > 1)
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<WaterBoltSpawner>()] > 1)
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
@@ -79,13 +71,13 @@ namespace MagusClass.Items
                     }
                 }
             }
-            
+
             //Kill all projectiles without the buff
             if (player.dead || !player.active)
             {
-                player.ClearBuff(ModContent.BuffType<VilethornBuff>());
+                player.ClearBuff(ModContent.BuffType<WaterBoltBuff>());
             }
-            if (!player.HasBuff(ModContent.BuffType<VilethornBuff>()))
+            if (!player.HasBuff(ModContent.BuffType<WaterBoltBuff>()))
             {
                 Projectile.ai[1] = 1;
             }
@@ -99,16 +91,26 @@ namespace MagusClass.Items
                     Projectile.Kill();
                 }
             }
-            if (Projectile.ai[1] == 0 && Projectile.ai[0] < 10f && spawnedProjectile < 0 || Main.projectile[spawnedProjectile].alpha >= 255)
+
+            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 60f)
             {
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position.X + Projectile.velocity.X + (float)(Projectile.width / 2), Projectile.position.Y + Projectile.velocity.Y + (float)(Projectile.height / 2), Projectile.velocity.X, Projectile.velocity.Y, ProjectileID.VilethornBase, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    float farX = Projectile.Center.X;
+                    float centerY = Projectile.Center.Y;
+
+                    int offset = Main.rand.Next(-15, 16);
+                    centerY += offset;
+                    Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset));
+                    int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.WaterBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
                 }
-                Projectile.ai[0]++;
+                Projectile.ai[0] = 0;
             }
-            Projectile.rotation += 0.4f * Projectile.direction;
+            Projectile.ai[0]++;
+
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); ; 
+            Projectile.spriteDirection = Projectile.direction;
         }
 
         public override bool ShouldUpdatePosition()
@@ -117,7 +119,7 @@ namespace MagusClass.Items
         }
     }
 
-    internal class VilethornBuff : ModBuff
+    internal class WaterBoltBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -127,10 +129,10 @@ namespace MagusClass.Items
 
         public override void Update(Player player, ref int buffIndex)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] > 0)
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<WaterBoltSpawner>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= 30;
+                player.statManaMax2 -= 25;
             }
             else
             {
