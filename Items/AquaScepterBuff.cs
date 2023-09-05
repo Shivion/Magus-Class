@@ -1,28 +1,13 @@
-﻿using Terraria;
+﻿using System.Runtime.InteropServices;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    internal class AquaScepterBuff : ModBuff
+    internal class AquaScepterBuff : MagusSpellBuff
     {
-        public override void SetStaticDefaults()
-        {
-            Main.buffNoSave[Type] = true;
-            Main.buffNoTimeDisplay[Type] = true;
-        }
-
-        public override void Update(Player player, ref int buffIndex)
-        {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<AquaScepterSpawner>()] > 0)
-            {
-                player.buffTime[buffIndex] = 18000;
-                player.statManaMax2 -= 50;
-            }
-            else
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
-        }
+        protected override int ManaCost => 50;
+        protected override bool MultipleSpellsAllowed => false;
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<AquaScepterSpawner>() };
     }
 }

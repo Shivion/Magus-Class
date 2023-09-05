@@ -30,6 +30,11 @@ namespace MagusClass
             }
             while ((colliding && ScanDirection > 0) || (!colliding && ScanDirection < 0));
 
+            if(ScanDirection < 0)
+            {
+                Y += 1;
+            }
+
             int worldY = Y * 16;
 
             return new Vector2(pointPoisition.X, worldY);

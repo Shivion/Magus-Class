@@ -19,7 +19,7 @@ namespace MagusClass.Items
             Item.mana = 50;
             Item.damage = 15;
             Item.useTime = 16;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<AquaScepterSpawner>();
             Item.buffType = ModContent.BuffType<AquaScepterBuff>();
