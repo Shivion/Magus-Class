@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public partial class FlowerOfFire : ModItem
+    public partial class FlowerOfFrost : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -15,17 +15,17 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.FlowerofFire);
+            Item.CloneDefaults(ItemID.FlowerofFrost);
             Item.mana = 50;
             Item.damage = 10;
-            Item.shoot = ModContent.ProjectileType<FlowerOfFireSpawner>();
-            Item.buffType = ModContent.BuffType<FlowerOfFireBuff>();
+            Item.shoot = ModContent.ProjectileType<FlowerOfFrostSpawner>();
+            Item.buffType = ModContent.BuffType<FlowerOfFrostBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.FlowerofFire);
+            recipe.AddIngredient(ItemID.FlowerofFrost);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -38,15 +38,21 @@ namespace MagusClass.Items
         }
     }
 
-    class FlowerOfFireSpawner : FlowerOfSomethingSpawner
-    { 
-    
+    class FlowerOfFrostSpawner : FlowerOfSomethingSpawner
+    {
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            spawnedProjectileType = ProjectileID.BallofFrost;
+            projectileID = ModContent.ProjectileType<FlowerOfFrostSpawner>();
+            buffID = ModContent.BuffType<FlowerOfFrostBuff>();
+        }
     }
 
-    class FlowerOfFireBuff : MagusSpellBuff
+    class FlowerOfFrostBuff : MagusSpellBuff
     {
         protected override int ManaCost => 50;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<FlowerOfFireSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<FlowerOfFrostSpawner>() };
     }
 }
