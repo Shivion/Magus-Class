@@ -45,7 +45,7 @@ namespace MagusClass.Items
                     }
                 }
             }
-            
+
             //Kill all projectiles without the buff
             if (player.dead || !player.active)
             {

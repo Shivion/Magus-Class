@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -27,7 +26,7 @@ namespace MagusClass.Items
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Vilethorn);
-            recipe.AddTile(TileID.WorkBenches); 
+            recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
 

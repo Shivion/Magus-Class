@@ -15,7 +15,7 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.FlowerofFire) ;
+            Item.CloneDefaults(ItemID.FlowerofFire);
             Item.mana = 50;
             Item.damage = 10;
             Item.shoot = ModContent.ProjectileType<FlowerOfFireSpawner>();

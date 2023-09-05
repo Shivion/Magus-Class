@@ -1,5 +1,4 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
@@ -23,7 +22,7 @@ namespace MagusClass.Items
             {
                 activeSpells += player.ownedProjectileCounts[ProjectileTypes[i]];
             }
-            if(activeSpells > 0)
+            if (activeSpells > 0)
             {
                 player.buffTime[buffIndex] = 18000;
                 player.statManaMax2 -= MultipleSpellsAllowed ? ManaCost * activeSpells : ManaCost;

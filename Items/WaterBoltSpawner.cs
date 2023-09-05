@@ -75,7 +75,7 @@ namespace MagusClass.Items
             }
             Projectile.ai[0]++;
 
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); ; 
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); ;
             Projectile.spriteDirection = Projectile.direction;
         }
 

@@ -85,7 +85,7 @@ namespace MagusClass.Items
 
             }
 
-            if(reachedX && reachedY)
+            if (reachedX && reachedY)
             {
                 if (Projectile.ai[1] == 0 && Projectile.ai[0] > 5f)
                 {

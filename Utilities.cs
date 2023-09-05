@@ -1,5 +1,5 @@
-﻿using Terraria;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace MagusClass
 {
@@ -30,7 +30,7 @@ namespace MagusClass
             }
             while ((colliding && ScanDirection > 0) || (!colliding && ScanDirection < 0));
 
-            if(ScanDirection < 0)
+            if (ScanDirection < 0)
             {
                 Y += 1;
             }

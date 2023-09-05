@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
