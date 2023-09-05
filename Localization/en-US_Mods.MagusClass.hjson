@@ -25,6 +25,16 @@ Items: {
 		DisplayName: Flower Of Fire
 		Tooltip: ""
 	}
+
+	CrystalVileShard: {
+		DisplayName: Crystal Vile Shard
+		Tooltip: ""
+	}
+
+	NettleBurst: {
+		DisplayName: Nettle Burst
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -34,6 +44,8 @@ Projectiles: {
 	WaterBoltSpawner.DisplayName: Water Bolt Spawner
 	AquaScepterSpawner.DisplayName: Aqua Scepter Spawner
 	FlowerOfFireSpawner.DisplayName: Flower Of Fire Spawner
+	CrystalVileShardSpawner.DisplayName: Crystal Vile Shard Spawner
+	NettleBurstSpawner.DisplayName: Nettle Burst Spawner
 }
 
 Buffs: {
@@ -60,5 +72,15 @@ Buffs: {
 	FlowerOfFireBuff: {
 		DisplayName: Flower Of Fire Buff
 		Description: Mods.MagusClass.Buffs.FlowerOfFireBuff.Description
+	}
+
+	CrystalVileShardBuff: {
+		DisplayName: Crystal Vile Shard Buff
+		Description: Mods.MagusClass.Buffs.CrystalVileShardBuff.Description
+	}
+
+	NettleBurstBuff: {
+		DisplayName: Nettle Burst Buff
+		Description: Mods.MagusClass.Buffs.NettleBurstBuff.Description
 	}
 }
