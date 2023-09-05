@@ -1,29 +1,34 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    internal class VilethornSpawner : ModProjectile
+    internal class FlowerOfSomethingSpawner : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.Vilethorn;
-
-        int spawnedProjectile;
-
-        public override void SetStaticDefaults()
-        {
-
-        }
+        protected int spawnedProjectileType;
+        protected int buffID;
+        protected int projectileID;
 
         public override void SetDefaults()
         {
             Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
-            //Vilethorns cast count
-            Projectile.ai[0] = 0;
-            spawnedProjectile = -1;
+            spawnedProjectileType = ProjectileID.BallofFire;
+            projectileID = ModContent.ProjectileType<FlowerOfFireSpawner>();
+            buffID = ModContent.BuffType<FlowerOfFireBuff>();
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            Player player = Main.player[Projectile.owner];
+            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0, Projectile.height + 10);
+            base.OnSpawn(source);
         }
 
         public override void AI()
@@ -32,7 +37,7 @@ namespace MagusClass.Items
             Projectile.ai[2]++;
             //Kill the older projectile
             Player player = Main.player[Projectile.owner];
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<VilethornSpawner>()] > 1)
+            if (player.ownedProjectileCounts[spawnedProjectileType] > 1)
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
@@ -49,9 +54,9 @@ namespace MagusClass.Items
             //Kill all projectiles without the buff
             if (player.dead || !player.active)
             {
-                player.ClearBuff(ModContent.BuffType<VilethornBuff>());
+                player.ClearBuff(buffID);
             }
-            if (!player.HasBuff(ModContent.BuffType<VilethornBuff>()))
+            if (!player.HasBuff(buffID))
             {
                 Projectile.ai[1] = 1;
             }
@@ -65,16 +70,26 @@ namespace MagusClass.Items
                     Projectile.Kill();
                 }
             }
-            if (Projectile.ai[1] == 0 && Projectile.ai[0] < 10f && spawnedProjectile < 0 || Main.projectile[spawnedProjectile].alpha >= 255)
+
+            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 60f)
             {
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position.X + Projectile.velocity.X + (float)(Projectile.width / 2), Projectile.position.Y + Projectile.velocity.Y + (float)(Projectile.height / 2), Projectile.velocity.X, Projectile.velocity.Y, ProjectileID.VilethornBase, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    float farX = Projectile.Center.X;
+                    float centerY = Projectile.Center.Y;
+
+                    int offset = Main.rand.Next(-15, 16);
+                    Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset));
+                    int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, perturbedSpeed.X, perturbedSpeed.Y, projectileID, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
+                    SoundEngine.PlaySound(SoundID.Item20, Projectile.position);
                 }
-                Projectile.ai[0]++;
+                Projectile.ai[0] = 0;
             }
-            Projectile.rotation += 0.4f * Projectile.direction;
+            Projectile.ai[0]++;
+
+            //Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); ; 
+            Projectile.spriteDirection = Projectile.direction;
         }
 
         public override bool ShouldUpdatePosition()

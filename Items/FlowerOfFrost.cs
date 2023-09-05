@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class Vilethorn : ModItem
+    public partial class FlowerOfFrost : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -15,17 +15,17 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.Vilethorn);
-            Item.mana = 30;
-            Item.damage = 5;
-            Item.shoot = ModContent.ProjectileType<VilethornSpawner>();
-            Item.buffType = ModContent.BuffType<VilethornBuff>();
+            Item.CloneDefaults(ItemID.FlowerofFrost);
+            Item.mana = 50;
+            Item.damage = 10;
+            Item.shoot = ModContent.ProjectileType<FlowerOfFrostSpawner>();
+            Item.buffType = ModContent.BuffType<FlowerOfFrostBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Vilethorn);
+            recipe.AddIngredient(ItemID.FlowerofFrost);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -38,14 +38,21 @@ namespace MagusClass.Items
         }
     }
 
-    internal class VilethornSpawner : VilethornishSpawner
+    class FlowerOfFrostSpawner : FlowerOfSomethingSpawner
     {
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            spawnedProjectileType = ProjectileID.BallofFrost;
+            projectileID = ModContent.ProjectileType<FlowerOfFrostSpawner>();
+            buffID = ModContent.BuffType<FlowerOfFrostBuff>();
+        }
     }
 
-    internal class VilethornBuff : MagusSpellBuff
+    class FlowerOfFrostBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 30;
+        protected override int ManaCost => 50;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<VilethornSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<FlowerOfFrostSpawner>() };
     }
 }

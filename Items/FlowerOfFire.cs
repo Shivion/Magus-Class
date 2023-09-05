@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class FlowerOfFire : ModItem
+    public partial class FlowerOfFire : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -36,5 +36,17 @@ namespace MagusClass.Items
             player.AddBuff(Item.buffType, 2);
             return true;
         }
+    }
+
+    class FlowerOfFireSpawner : FlowerOfSomethingSpawner
+    { 
+    
+    }
+
+    class FlowerOfFireBuff : MagusSpellBuff
+    {
+        protected override int ManaCost => 50;
+        protected override bool MultipleSpellsAllowed => false;
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<FlowerOfFireSpawner>() };
     }
 }

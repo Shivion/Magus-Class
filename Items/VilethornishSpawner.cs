@@ -1,16 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    internal class FlowerOfFireSpawner : ModProjectile
+    internal abstract class VilethornishSpawner : ModProjectile
     {
-        private float fallSpeed = 0;
-        private float fallspeed;
+        public override string Texture => "Terraria/Images/Item_" + ItemID.Vilethorn;
+
+        int spawnedProjectile;
+        protected int spawnedProjectileType;
+        protected int buffID;
+        protected int projectileID;
 
         public override void SetStaticDefaults()
         {
@@ -22,13 +24,10 @@ namespace MagusClass.Items
             Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
-        }
-
-        public override void OnSpawn(IEntitySource source)
-        {
-            Player player = Main.player[Projectile.owner];
-            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0, Projectile.height + 10);
-            base.OnSpawn(source);
+            spawnedProjectile = -1;
+            spawnedProjectileType = ProjectileID.VilethornBase;
+            buffID = ModContent.BuffType<VilethornBuff>();
+            projectileID = ModContent.ProjectileType<VilethornSpawner>();
         }
 
         public override void AI()
@@ -37,7 +36,7 @@ namespace MagusClass.Items
             Projectile.ai[2]++;
             //Kill the older projectile
             Player player = Main.player[Projectile.owner];
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<FlowerOfFireSpawner>()] > 1)
+            if (player.ownedProjectileCounts[projectileID] > 1)
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
@@ -54,9 +53,9 @@ namespace MagusClass.Items
             //Kill all projectiles without the buff
             if (player.dead || !player.active)
             {
-                player.ClearBuff(ModContent.BuffType<FlowerOfFireBuff>());
+                player.ClearBuff(buffID);
             }
-            if (!player.HasBuff(ModContent.BuffType<FlowerOfFireBuff>()))
+            if (!player.HasBuff(buffID))
             {
                 Projectile.ai[1] = 1;
             }
@@ -70,26 +69,17 @@ namespace MagusClass.Items
                     Projectile.Kill();
                 }
             }
-
-            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 60f)
+            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 10f && (spawnedProjectile < 0 || Main.projectile[spawnedProjectile].alpha >= 255))
             {
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    float farX = Projectile.Center.X;
-                    float centerY = Projectile.Center.Y;
-
-                    int offset = Main.rand.Next(-15, 16);
-                    Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset));
-                    int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.BallofFire, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position.X + Projectile.velocity.X + (float)(Projectile.width / 2), Projectile.position.Y + Projectile.velocity.Y + (float)(Projectile.height / 2), Projectile.velocity.X, Projectile.velocity.Y, spawnedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
-                    SoundEngine.PlaySound(SoundID.Item20, Projectile.position);
                 }
                 Projectile.ai[0] = 0;
             }
             Projectile.ai[0]++;
-
-            //Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); ; 
-            Projectile.spriteDirection = Projectile.direction;
+            Projectile.rotation += 0.4f * Projectile.direction;
         }
 
         public override bool ShouldUpdatePosition()
