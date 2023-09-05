@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -67,9 +68,10 @@ namespace MagusClass.Items
 
                     int offset = Main.rand.Next(-15, 16);
                     centerY += offset;
-                    Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset));
+                    Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset) * Projectile.direction);
                     int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.WaterBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
+                    SoundEngine.PlaySound(SoundID.Item21, Projectile.position);
                 }
                 Projectile.ai[0] = 0;
             }

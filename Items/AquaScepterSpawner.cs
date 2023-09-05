@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -99,6 +100,7 @@ namespace MagusClass.Items
                         sprayVelocity = sprayVelocity * 10;
                         int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, sprayVelocity.X, sprayVelocity.Y, ProjectileID.WaterStream, Projectile.damage, Projectile.knockBack, Projectile.owner);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
+                        SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
                     }
                     Projectile.ai[0] = Main.rand.Next(0, 2);
                 }

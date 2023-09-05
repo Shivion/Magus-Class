@@ -21,6 +21,7 @@ namespace MagusClass.Items
             Item.useTime = 16;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
+            Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<AquaScepterSpawner>();
             Item.buffType = ModContent.BuffType<AquaScepterBuff>();
         }
