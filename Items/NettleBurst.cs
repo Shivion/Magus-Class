@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class NettleBurst : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.NettleBurst;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

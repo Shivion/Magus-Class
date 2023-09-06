@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class CrystalVileShard : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.CrystalVileShard;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
