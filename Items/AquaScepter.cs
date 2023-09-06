@@ -43,7 +43,7 @@ namespace MagusClass.Items
         }
     }
 
-    internal class AquaScepterSpawner : ModProjectile
+    internal class AquaScepterSpawner : MagusProjectile
     {
         public override string Texture => "Terraria/Images/Item_" + ItemID.AquaScepter;
 
@@ -64,47 +64,14 @@ namespace MagusClass.Items
 
         public override void AI()
         {
-            //Kill the older projectile
-            Player player = Main.player[Projectile.owner];
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<AquaScepterSpawner>()] > 1)
-            {
-                for (int i = 0; i < Main.projectile.Length; i++)
-                {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[1] < 1)
-                    {
-                        if (Main.projectile[i].ai[2] > Projectile.ai[2])
-                        {
-                            Main.projectile[i].ai[1] = 1;
-                        }
-                    }
-                }
-            }
-
-            //Kill all projectiles without the buff
-            if (player.dead || !player.active)
-            {
-                player.ClearBuff(ModContent.BuffType<AquaScepterBuff>());
-            }
-            if (!player.HasBuff(ModContent.BuffType<AquaScepterBuff>()))
-            {
-                Projectile.ai[1] = 1;
-            }
-
-            if (Projectile.ai[1] == 1)
-            {
-                Projectile.alpha += 5;
-                if (Projectile.alpha > 255)
-                {
-                    Projectile.alpha = 255;
-                    Projectile.Kill();
-                }
-            }
+            base.AI();
+            KillExistingProjectiles();
 
             bool reachedX = false;
             bool reachedY = false;
 
             //Move to mouse location on the first frame
-            if (Projectile.ai[2] == 0)
+            if (Projectile.ai[2] == 1)
             {
                 targetPosition = Main.MouseWorld;
             }
@@ -151,9 +118,6 @@ namespace MagusClass.Items
                 Projectile.rotation = Projectile.velocity.ToRotation();
                 Projectile.position += Projectile.velocity;
             }
-
-            //duration timer, used to get the oldest projectile
-            Projectile.ai[2]++;
         }
 
         public override bool ShouldUpdatePosition()
