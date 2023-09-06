@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class WaterBolt : ModItem
+    public class StaffOfEarth : ModItem
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.StaffofEarth;
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -15,17 +18,18 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.WaterBolt);
-            Item.mana = 50;
-            Item.damage = 10;
-            Item.shoot = ModContent.ProjectileType<WaterBoltSpawner>();
-            Item.buffType = ModContent.BuffType<WaterBoltBuff>();
+            Item.CloneDefaults(ItemID.StaffofEarth);
+            Item.autoReuse = false;
+            Item.mana = 100;
+            Item.damage = 100;
+            Item.shoot = ModContent.ProjectileType<StaffOfEarthSpawner>();
+            Item.buffType = ModContent.BuffType<StaffOfEarthBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WaterBolt);
+            recipe.AddIngredient(ItemID.StaffofEarth);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -38,25 +42,27 @@ namespace MagusClass.Items
         }
     }
 
-    internal class WaterBoltSpawner : SimpleProjectileSpawner
+    internal class StaffOfEarthSpawner : SimpleProjectileSpawner
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.StaffofEarth;
+
         public override void SetDefaults()
         {
             base.SetDefaults();
-            spawnedProjectileType = ProjectileID.WaterBolt;
-            buffID = ModContent.BuffType<WaterBoltBuff>();
-            projectileID = ModContent.ProjectileType<WaterBoltSpawner>();
-            sound = SoundID.Item21;
+            spawnedProjectileType = ProjectileID.BoulderStaffOfEarth;
+            buffID = ModContent.BuffType<StaffOfEarthBuff>();
+            projectileID = ModContent.ProjectileType<StaffOfEarthSpawner>();
             coneRadius = 15;
             spawnInterval = 60f;
-            doSpin = false;
+            sound = SoundID.Item69;
+            doSpin = true;
         }
     }
 
-    internal class WaterBoltBuff : MagusSpellBuff
+    internal class StaffOfEarthBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 100;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<WaterBoltSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<StaffOfEarthSpawner>() };
     }
 }

@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class WaterBolt : ModItem
+    public class CursedFlames : ModItem
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.CursedFlames;
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -15,17 +18,18 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.WaterBolt);
+            Item.CloneDefaults(ItemID.CursedFlames);
+            Item.autoReuse = false;
             Item.mana = 50;
-            Item.damage = 10;
-            Item.shoot = ModContent.ProjectileType<WaterBoltSpawner>();
-            Item.buffType = ModContent.BuffType<WaterBoltBuff>();
+            Item.damage = 25;
+            Item.shoot = ModContent.ProjectileType<CursedFlamesSpawner>();
+            Item.buffType = ModContent.BuffType<CursedFlamesBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WaterBolt);
+            recipe.AddIngredient(ItemID.CursedFlames);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -38,25 +42,28 @@ namespace MagusClass.Items
         }
     }
 
-    internal class WaterBoltSpawner : SimpleProjectileSpawner
+    internal class CursedFlamesSpawner : SimpleProjectileSpawner
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.CursedFlames;
+
         public override void SetDefaults()
         {
             base.SetDefaults();
-            spawnedProjectileType = ProjectileID.WaterBolt;
-            buffID = ModContent.BuffType<WaterBoltBuff>();
-            projectileID = ModContent.ProjectileType<WaterBoltSpawner>();
-            sound = SoundID.Item21;
+            spawnedProjectileType = ProjectileID.CursedFlameFriendly;
+            buffID = ModContent.BuffType<CursedFlamesBuff>();
+            projectileID = ModContent.ProjectileType<CursedFlamesSpawner>();
             coneRadius = 15;
-            spawnInterval = 60f;
+            spawnInterval = 30f;
+            sound = SoundID.Item20;
             doSpin = false;
+            horizontalSprite = true;
         }
     }
 
-    internal class WaterBoltBuff : MagusSpellBuff
+    internal class CursedFlamesBuff : MagusSpellBuff
     {
         protected override int ManaCost => 50;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<WaterBoltSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<CursedFlamesSpawner>() };
     }
 }

@@ -35,6 +35,41 @@ Items: {
 		DisplayName: Nettle Burst
 		Tooltip: ""
 	}
+
+	BubbleGun: {
+		DisplayName: Bubble Gun
+		Tooltip: ""
+	}
+
+	CursedFlames: {
+		DisplayName: Cursed Flames
+		Tooltip: ""
+	}
+
+	FlowerOfFrost: {
+		DisplayName: Flower Of Frost
+		Tooltip: ""
+	}
+
+	GoldenShower: {
+		DisplayName: Golden Shower
+		Tooltip: ""
+	}
+
+	MagicalHarp: {
+		DisplayName: Magical Harp
+		Tooltip: ""
+	}
+
+	RazorbladeTyphoon: {
+		DisplayName: Razorblade Typhoon
+		Tooltip: ""
+	}
+
+	StaffOfEarth: {
+		DisplayName: Staff Of Earth
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -46,6 +81,13 @@ Projectiles: {
 	FlowerOfFireSpawner.DisplayName: Flower Of Fire Spawner
 	CrystalVileShardSpawner.DisplayName: Crystal Vile Shard Spawner
 	NettleBurstSpawner.DisplayName: Nettle Burst Spawner
+	BubbleGunSpawner.DisplayName: Bubble Gun Spawner
+	CursedFlamesSpawner.DisplayName: Cursed Flames Spawner
+	FlowerOfFrostSpawner.DisplayName: Flower Of Frost Spawner
+	GoldenShowerSpawner.DisplayName: Golden Shower Spawner
+	MagicalHarpSpawner.DisplayName: Magical Harp Spawner
+	RazorbladeTyphoonSpawner.DisplayName: Razorblade Typhoon Spawner
+	StaffOfEarthSpawner.DisplayName: Staff Of Earth Spawner
 }
 
 Buffs: {
@@ -82,5 +124,40 @@ Buffs: {
 	NettleBurstBuff: {
 		DisplayName: Nettle Burst Buff
 		Description: Mods.MagusClass.Buffs.NettleBurstBuff.Description
+	}
+
+	BubbleGunBuff: {
+		DisplayName: Bubble Gun Buff
+		Description: Mods.MagusClass.Buffs.BubbleGunBuff.Description
+	}
+
+	CursedFlamesBuff: {
+		DisplayName: Cursed Flames Buff
+		Description: Mods.MagusClass.Buffs.CursedFlamesBuff.Description
+	}
+
+	FlowerOfFrostBuff: {
+		DisplayName: Flower Of Frost Buff
+		Description: Mods.MagusClass.Buffs.FlowerOfFrostBuff.Description
+	}
+
+	GoldenShowerBuff: {
+		DisplayName: Golden Shower Buff
+		Description: Mods.MagusClass.Buffs.GoldenShowerBuff.Description
+	}
+
+	MagicalHarpBuff: {
+		DisplayName: Magical Harp Buff
+		Description: Mods.MagusClass.Buffs.MagicalHarpBuff.Description
+	}
+
+	RazorbladeTyphoonBuff: {
+		DisplayName: Razorblade Typhoon Buff
+		Description: Mods.MagusClass.Buffs.RazorbladeTyphoonBuff.Description
+	}
+
+	StaffOfEarthBuff: {
+		DisplayName: Staff Of Earth Buff
+		Description: Mods.MagusClass.Buffs.StaffOfEarthBuff.Description
 	}
 }
