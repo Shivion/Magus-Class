@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class GoldenShower : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.GoldenShower;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -21,7 +19,7 @@ namespace MagusClass.Items
             Item.CloneDefaults(ItemID.GoldenShower);
             Item.autoReuse = false;
             Item.width = 28;
-            Item.height = 30;
+            Item.height = 32;
             Item.mana = 75;
             Item.damage = 15;
             Item.shoot = ModContent.ProjectileType<GoldenShowerSpawner>();
