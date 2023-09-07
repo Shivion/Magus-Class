@@ -85,6 +85,11 @@ Items: {
 		DisplayName: Lunar Flare
 		Tooltip: ""
 	}
+
+	NimbusRod: {
+		DisplayName: Nimbus Rod
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -106,6 +111,8 @@ Projectiles: {
 	MeteorStaffSpawner.DisplayName: Meteor Staff Spawner
 	BlizzardStaffSpawner.DisplayName: Blizzard Staff Spawner
 	LunarFlareSpawner.DisplayName: Lunar Flare Spawner
+	NimbusRodCloud.DisplayName: Nimbus Rod Cloud
+	NimbusRodCloudSeed.DisplayName: Nimbus Rod Cloud Seed
 }
 
 Buffs: {
@@ -192,5 +199,10 @@ Buffs: {
 	LunarFlareBuff: {
 		DisplayName: Lunar Flare Buff
 		Description: Mods.MagusClass.Buffs.LunarFlareBuff.Description
+	}
+
+	NimbusRodBuff: {
+		DisplayName: Nimbus Rod Buff
+		Description: Mods.MagusClass.Buffs.NimbusRodBuff.Description
 	}
 }
