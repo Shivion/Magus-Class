@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.NettleBurst);
+            Item.width = 50;
+            Item.height = 46;
             Item.mana = 75;
             Item.damage = 30;
             Item.shoot = ModContent.ProjectileType<NettleBurstSpawner>();
@@ -46,6 +48,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 46;
+            Projectile.height = 42;
             spawnedProjectileType = ProjectileID.NettleBurstRight;
             buffID = ModContent.BuffType<NettleBurstBuff>();
             projectileID = ModContent.ProjectileType<NettleBurstSpawner>();

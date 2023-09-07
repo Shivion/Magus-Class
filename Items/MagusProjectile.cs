@@ -35,6 +35,10 @@ namespace MagusClass.Items
             {
                 Projectile.ai[1] = 1;
             }
+            else
+            {
+                Projectile.timeLeft = 3600;
+            }
 
             if (Projectile.ai[1] == 1)
             {
@@ -44,6 +48,7 @@ namespace MagusClass.Items
                     Projectile.alpha = 255;
                     Projectile.Kill();
                 }
+                return;
             }
         }
 

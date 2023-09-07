@@ -18,6 +18,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.RazorbladeTyphoon);
+            Item.width = 28;
+            Item.height = 30;
             Item.autoReuse = false;
             Item.mana = 100;
             Item.damage = 60;
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 30;
             spawnedProjectileType = ProjectileID.Typhoon;
             buffID = ModContent.BuffType<RazorbladeTyphoonBuff>();
             projectileID = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();

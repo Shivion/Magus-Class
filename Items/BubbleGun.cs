@@ -25,6 +25,8 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.mana = 75;
             Item.damage = 70;
+            Item.width = 70;
+            Item.height = 20;
             Item.shoot = ModContent.ProjectileType<BubbleGunSpawner>();
             Item.buffType = ModContent.BuffType<BubbleGunBuff>();
 
@@ -60,6 +62,8 @@ namespace MagusClass.Items
         {
             base.SetDefaults();
             spawnedProjectileType = ProjectileID.Bubble;
+            Projectile.width = 70;
+            Projectile.height = 18;
             buffID = ModContent.BuffType<BubbleGunBuff>();
             projectileID = ModContent.ProjectileType<BubbleGunSpawner>();
             coneRadius = 15;
