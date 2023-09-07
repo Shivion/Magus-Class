@@ -18,6 +18,8 @@ namespace MagusClass.Items
             Item.CloneDefaults(ItemID.CrimsonRod);
             Item.mana = 30;
             Item.damage = 12;
+            Item.width = 38;
+            Item.height = 40;
             Item.shoot = ModContent.ProjectileType<CrimsonRodCloudSeed>();
             Item.buffType = ModContent.BuffType<CrimsonRodBuff>();
         }
@@ -51,6 +53,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Projectile.CloneDefaults(ProjectileID.BloodCloudMoving);
+            Projectile.width = 24;
+            Projectile.height = 24;
             Projectile.aiStyle = 0;
             AIType = ProjectileID.None;
         }
@@ -116,6 +120,8 @@ namespace MagusClass.Items
         {
             Projectile.CloneDefaults(ProjectileID.BloodCloudRaining);
             Projectile.aiStyle = 0;
+            Projectile.width = 54;
+            Projectile.height = 24;
         }
 
         public override void AI()
@@ -132,6 +138,7 @@ namespace MagusClass.Items
             {
                 notColliding = false;
             }
+
             //animate cloud
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 8)
@@ -143,6 +150,7 @@ namespace MagusClass.Items
                     Projectile.frame = 0;
                 }
             }
+
             //if its not colliding summon rain
             else if (notColliding)
             {

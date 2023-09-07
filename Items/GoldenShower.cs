@@ -20,6 +20,8 @@ namespace MagusClass.Items
         {
             Item.CloneDefaults(ItemID.GoldenShower);
             Item.autoReuse = false;
+            Item.width = 28;
+            Item.height = 30;
             Item.mana = 75;
             Item.damage = 15;
             Item.shoot = ModContent.ProjectileType<GoldenShowerSpawner>();
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 30;
             spawnedProjectileType = ProjectileID.GoldenShowerFriendly;
             buffID = ModContent.BuffType<GoldenShowerBuff>();
             projectileID = ModContent.ProjectileType<GoldenShowerSpawner>();

@@ -20,6 +20,8 @@ namespace MagusClass.Items
             Item.mana = 50;
             Item.damage = 15;
             Item.useTime = 16;
+            Item.width = 48;
+            Item.height = 24;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
@@ -60,6 +62,8 @@ namespace MagusClass.Items
             Projectile.velocity = Vector2.Zero;
             //AquaScepters cast count
             Projectile.ai[0] = 0;
+            Projectile.width = 48;
+            Projectile.height = 18;
         }
 
         public override void AI()

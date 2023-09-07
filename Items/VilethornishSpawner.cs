@@ -19,6 +19,8 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
+            Projectile.width = 32;
+            Projectile.height = 32;
             Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;

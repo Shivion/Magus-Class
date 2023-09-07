@@ -19,6 +19,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.StaffofEarth);
+            Item.width = 42;
+            Item.height = 42;
             Item.autoReuse = false;
             Item.mana = 100;
             Item.damage = 100;
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 42;
+            Projectile.height = 42;
             spawnedProjectileType = ProjectileID.BoulderStaffOfEarth;
             buffID = ModContent.BuffType<StaffOfEarthBuff>();
             projectileID = ModContent.ProjectileType<StaffOfEarthSpawner>();

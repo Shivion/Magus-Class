@@ -22,6 +22,8 @@ namespace MagusClass.Items
             Item.autoReuse = false;
             Item.mana = 50;
             Item.damage = 25;
+            Item.width = 28;
+            Item.height = 32;
             Item.shoot = ModContent.ProjectileType<CursedFlamesSpawner>();
             Item.buffType = ModContent.BuffType<CursedFlamesBuff>();
         }
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 32;
             spawnedProjectileType = ProjectileID.CursedFlameFriendly;
             buffID = ModContent.BuffType<CursedFlamesBuff>();
             projectileID = ModContent.ProjectileType<CursedFlamesSpawner>();

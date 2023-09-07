@@ -19,6 +19,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicalHarp);
+            Item.width = 28;
+            Item.height = 38;
             Item.autoReuse = false;
             Item.mana = 50;
             Item.damage = 42;
@@ -57,6 +59,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 30;
             spawnedProjectileType = ProjectileID.EighthNote;
             buffID = ModContent.BuffType<MagicalHarpBuff>();
             projectileID = ModContent.ProjectileType<MagicalHarpSpawner>();
