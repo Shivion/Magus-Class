@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CursedFlames);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.autoReuse = false;
             Item.mana = 50;
             Item.damage = 25;

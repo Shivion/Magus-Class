@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,6 +10,8 @@ namespace MagusClass.Items
         protected int buffID;
         protected int projectileID;
 
+        private Vector2 targetPosition;
+
         public override void SetStaticDefaults()
         {
 
@@ -16,6 +19,7 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
+            Projectile.netImportant = true;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
         }
@@ -71,9 +75,46 @@ namespace MagusClass.Items
             }
         }
 
-        public override bool ShouldUpdatePosition()
+        public bool Thrown()
         {
+            bool reachedX = false;
+            bool reachedY = false;
+
+            //Move to mouse location on the first frame
+            if (Projectile.ai[2] == 1)
+            {
+                targetPosition = Main.MouseWorld;
+            }
+            else
+            {
+                if (Projectile.velocity.X == 0f || (Projectile.velocity.X< 0f && Projectile.Center.X<targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
+                {
+                    reachedX = true;
+                }
+                else
+                {
+                    Projectile.position.X += Projectile.velocity.X * 2;
+                }
+                if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
+                {
+                    reachedY = true;
+                }
+                else
+                {
+                    Projectile.position.Y += Projectile.velocity.Y * 2;
+                }
+
+                if(reachedX && reachedY)
+                {
+                    return true;
+                }
+                else
+                {
+                    Projectile.rotation = Projectile.velocity.ToRotation();
+                }
+            }
             return false;
+
         }
     }
 }

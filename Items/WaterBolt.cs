@@ -16,6 +16,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.WaterBolt);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.width = 30;
             Item.height = 32;
             Item.mana = 50;

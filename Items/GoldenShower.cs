@@ -18,6 +18,8 @@ namespace MagusClass.Items
         {
             Item.CloneDefaults(ItemID.GoldenShower);
             Item.autoReuse = false;
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.width = 28;
             Item.height = 32;
             Item.mana = 75;

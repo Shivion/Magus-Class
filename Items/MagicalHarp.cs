@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicalHarp);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.width = 28;
             Item.height = 38;
             Item.autoReuse = false;
