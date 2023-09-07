@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class MagicalHarp : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MagicalHarp;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class StaffOfEarth : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.StaffofEarth;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -19,8 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.StaffofEarth);
-            Item.width = 42;
-            Item.height = 42;
+            Item.width = 49;
+            Item.height = 49;
             Item.autoReuse = false;
             Item.mana = 100;
             Item.damage = 100;
