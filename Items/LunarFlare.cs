@@ -8,8 +8,10 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class MeteorStaff : ModItem
+    public class LunarFlare : ModItem
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.LunarFlareBook;
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -17,26 +19,26 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.MeteorStaff);
+            Item.CloneDefaults(ItemID.LunarFlareBook);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 50;
-            Item.damage = 50;
+            Item.mana = 100;
+            Item.damage = 100;
             Item.useTime = 16;
-            Item.width = 44;
-            Item.height = 43;
+            Item.width = 32;
+            Item.height = 32;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<MeteorStaffSpawner>();
-            Item.buffType = ModContent.BuffType<MeteorStaffBuff>();
+            Item.shoot = ModContent.ProjectileType<LunarFlareSpawner>();
+            Item.buffType = ModContent.BuffType<LunarFlareBuff>();
             Item.shootSpeed = 10;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.MeteorStaff);
+            recipe.AddIngredient(ItemID.LunarFlareBook);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -48,25 +50,26 @@ namespace MagusClass.Items
             return true;
         }
     }
-    internal class MeteorStaffSpawner : CallDownSpawner
+    internal class LunarFlareSpawner : CallDownSpawner
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MeteorStaff;
+        public override string Texture => "Terraria/Images/Item_" + ItemID.LunarFlareBook;
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.width = 44;
-            Projectile.height = 42;
-            buffID = ModContent.BuffType<MeteorStaffBuff>();
-            projectileID = ModContent.ProjectileType<MeteorStaffSpawner>();
-            possibleProjectiles = new int[] { ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3 };
+            Projectile.width = 28;
+            Projectile.height = 30;
+            buffID = ModContent.BuffType<LunarFlareBuff>();
+            projectileID = ModContent.ProjectileType<LunarFlareSpawner>();
+            possibleProjectiles = new int[] { ProjectileID.LunarFlare };
             sound = SoundID.Item88;
         }
     }
-    internal class MeteorStaffBuff : MagusSpellBuff
+
+    internal class LunarFlareBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 100;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<MeteorStaffSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<LunarFlareSpawner>() };
     }
 }

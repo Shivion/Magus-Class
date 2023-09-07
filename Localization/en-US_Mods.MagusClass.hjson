@@ -75,6 +75,16 @@ Items: {
 		DisplayName: Meteor Staff
 		Tooltip: ""
 	}
+
+	BlizzardStaff: {
+		DisplayName: Blizzard Staff
+		Tooltip: ""
+	}
+
+	LunarFlare: {
+		DisplayName: Lunar Flare
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -94,6 +104,8 @@ Projectiles: {
 	RazorbladeTyphoonSpawner.DisplayName: Razorblade Typhoon Spawner
 	StaffOfEarthSpawner.DisplayName: Staff Of Earth Spawner
 	MeteorStaffSpawner.DisplayName: Meteor Staff Spawner
+	BlizzardStaffSpawner.DisplayName: Blizzard Staff Spawner
+	LunarFlareSpawner.DisplayName: Lunar Flare Spawner
 }
 
 Buffs: {
@@ -170,5 +182,15 @@ Buffs: {
 	MeteorStaffBuff: {
 		DisplayName: Meteor Staff Buff
 		Description: Mods.MagusClass.Buffs.MeteorStaffBuff.Description
+	}
+
+	BlizzardStaffBuff: {
+		DisplayName: Blizzard Staff Buff
+		Description: Mods.MagusClass.Buffs.BlizzardStaffBuff.Description
+	}
+
+	LunarFlareBuff: {
+		DisplayName: Lunar Flare Buff
+		Description: Mods.MagusClass.Buffs.LunarFlareBuff.Description
 	}
 }
