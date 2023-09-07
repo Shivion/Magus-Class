@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.StaffofEarth);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.width = 49;
             Item.height = 49;
             Item.autoReuse = false;

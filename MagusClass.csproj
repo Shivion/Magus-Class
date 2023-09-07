@@ -8,6 +8,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Items\MeteorStaffBuff.png" />
     <None Remove="Items\VilethornBuff.png" />
   </ItemGroup>
   <ItemGroup>

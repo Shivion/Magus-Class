@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.NettleBurst);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.width = 50;
             Item.height = 46;
             Item.mana = 75;

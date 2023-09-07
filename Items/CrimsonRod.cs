@@ -16,6 +16,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CrimsonRod);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.mana = 30;
             Item.damage = 12;
             Item.width = 38;
@@ -102,8 +104,12 @@ namespace MagusClass.Items
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<CrimsonRodCloud>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-            return;
+
+            if (Main.myPlayer == Projectile.owner)
+            {
+                int newProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<CrimsonRodCloud>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, newProjectile);
+            }
         }
     }
 
@@ -122,6 +128,8 @@ namespace MagusClass.Items
             Projectile.aiStyle = 0;
             Projectile.width = 54;
             Projectile.height = 24;
+            buffID = ModContent.BuffType<CrimsonRodBuff>();
+            projectileID = ModContent.ProjectileType<CrimsonRodCloud>();
         }
 
         public override void AI()
@@ -171,6 +179,11 @@ namespace MagusClass.Items
                 return;
             }
             Projectile.localAI[0] = 0f;
+        }
+
+        public override bool ShouldUpdatePosition()
+        {
+            return false;
         }
     }
 

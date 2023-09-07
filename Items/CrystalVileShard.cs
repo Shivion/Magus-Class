@@ -17,6 +17,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CrystalVileShard);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.mana = 50;
             Item.damage = 20;
             Item.width = 35;

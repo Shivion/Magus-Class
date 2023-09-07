@@ -8,8 +8,6 @@ namespace MagusClass.Items
 {
     public class RazorbladeTyphoon : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.RazorbladeTyphoon;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -18,13 +16,16 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.RazorbladeTyphoon);
-            Item.width = 28;
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 31;
             Item.height = 30;
             Item.autoReuse = false;
             Item.mana = 100;
             Item.damage = 60;
             Item.shoot = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();
             Item.buffType = ModContent.BuffType<RazorbladeTyphoonBuff>();
+            Item.shootSpeed = 10;
         }
 
         public override void AddRecipes()
@@ -58,9 +59,9 @@ namespace MagusClass.Items
             projectileID = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();
             coneRadius = 180;
             spawnInterval = 6f;
-            projectileXSpawnOffset = -16;
             sound = SoundID.Item84;
             doSpin = true;
+            thrown = true;
         }
     }
 

@@ -70,6 +70,11 @@ Items: {
 		DisplayName: Staff Of Earth
 		Tooltip: ""
 	}
+
+	MeteorStaff: {
+		DisplayName: Meteor Staff
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -88,6 +93,7 @@ Projectiles: {
 	MagicalHarpSpawner.DisplayName: Magical Harp Spawner
 	RazorbladeTyphoonSpawner.DisplayName: Razorblade Typhoon Spawner
 	StaffOfEarthSpawner.DisplayName: Staff Of Earth Spawner
+	MeteorStaffSpawner.DisplayName: Meteor Staff Spawner
 }
 
 Buffs: {
@@ -159,5 +165,10 @@ Buffs: {
 	StaffOfEarthBuff: {
 		DisplayName: Staff Of Earth Buff
 		Description: Mods.MagusClass.Buffs.StaffOfEarthBuff.Description
+	}
+
+	MeteorStaffBuff: {
+		DisplayName: Meteor Staff Buff
+		Description: Mods.MagusClass.Buffs.MeteorStaffBuff.Description
 	}
 }
