@@ -75,6 +75,26 @@ Items: {
 		DisplayName: Meteor Staff
 		Tooltip: ""
 	}
+
+	BlizzardStaff: {
+		DisplayName: Blizzard Staff
+		Tooltip: ""
+	}
+
+	LunarFlare: {
+		DisplayName: Lunar Flare
+		Tooltip: ""
+	}
+
+	NimbusRod: {
+		DisplayName: Nimbus Rod
+		Tooltip: ""
+	}
+
+	InfernoFork: {
+		DisplayName: Inferno Fork
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -94,6 +114,11 @@ Projectiles: {
 	RazorbladeTyphoonSpawner.DisplayName: Razorblade Typhoon Spawner
 	StaffOfEarthSpawner.DisplayName: Staff Of Earth Spawner
 	MeteorStaffSpawner.DisplayName: Meteor Staff Spawner
+	BlizzardStaffSpawner.DisplayName: Blizzard Staff Spawner
+	LunarFlareSpawner.DisplayName: Lunar Flare Spawner
+	NimbusRodCloud.DisplayName: Nimbus Rod Cloud
+	NimbusRodCloudSeed.DisplayName: Nimbus Rod Cloud Seed
+	InfernoForkSpawner.DisplayName: Inferno Fork Spawner
 }
 
 Buffs: {
@@ -170,5 +195,25 @@ Buffs: {
 	MeteorStaffBuff: {
 		DisplayName: Meteor Staff Buff
 		Description: Mods.MagusClass.Buffs.MeteorStaffBuff.Description
+	}
+
+	BlizzardStaffBuff: {
+		DisplayName: Blizzard Staff Buff
+		Description: Mods.MagusClass.Buffs.BlizzardStaffBuff.Description
+	}
+
+	LunarFlareBuff: {
+		DisplayName: Lunar Flare Buff
+		Description: Mods.MagusClass.Buffs.LunarFlareBuff.Description
+	}
+
+	NimbusRodBuff: {
+		DisplayName: Nimbus Rod Buff
+		Description: Mods.MagusClass.Buffs.NimbusRodBuff.Description
+	}
+
+	InfernoForkBuff: {
+		DisplayName: Inferno Fork Buff
+		Description: Mods.MagusClass.Buffs.InfernoForkBuff.Description
 	}
 }

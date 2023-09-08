@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class MeteorStaff : ModItem
+    public class BlizzardStaff : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -17,26 +17,26 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.MeteorStaff);
+            Item.CloneDefaults(ItemID.BlizzardStaff);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 50;
-            Item.damage = 50;
+            Item.mana = 75;
+            Item.damage = 58;
             Item.useTime = 16;
-            Item.width = 44;
-            Item.height = 43;
+            Item.width = 62;
+            Item.height = 62;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<MeteorStaffSpawner>();
-            Item.buffType = ModContent.BuffType<MeteorStaffBuff>();
+            Item.shoot = ModContent.ProjectileType<BlizzardStaffSpawner>();
+            Item.buffType = ModContent.BuffType<BlizzardStaffBuff>();
             Item.shootSpeed = 10;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.MeteorStaff);
+            recipe.AddIngredient(ItemID.BlizzardStaff);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -48,25 +48,25 @@ namespace MagusClass.Items
             return true;
         }
     }
-    internal class MeteorStaffSpawner : CallDownSpawner
+    internal class BlizzardStaffSpawner : CallDownSpawner
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MeteorStaff;
+        public override string Texture => "Terraria/Images/Item_" + ItemID.BlizzardStaff;
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.width = 44;
-            Projectile.height = 42;
-            buffID = ModContent.BuffType<MeteorStaffBuff>();
-            projectileID = ModContent.ProjectileType<MeteorStaffSpawner>();
-            possibleProjectiles = new int[] { ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3 };
-            sound = SoundID.Item88;
+            Projectile.width = 58;
+            Projectile.height = 58;
+            buffID = ModContent.BuffType<BlizzardStaffBuff>();
+            projectileID = ModContent.ProjectileType<BlizzardStaffSpawner>();
+            possibleProjectiles = new int[] { ProjectileID.Blizzard };
+            sound = SoundID.Item28;
         }
     }
-    internal class MeteorStaffBuff : MagusSpellBuff
+    internal class BlizzardStaffBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 75;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<MeteorStaffSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<BlizzardStaffSpawner>() };
     }
 }
