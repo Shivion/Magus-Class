@@ -16,6 +16,10 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.FlowerofFire);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 33;
+            Item.height = 31;
             Item.mana = 50;
             Item.damage = 10;
             Item.shoot = ModContent.ProjectileType<FlowerOfFireSpawner>();

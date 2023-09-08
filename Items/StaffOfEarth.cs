@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class StaffOfEarth : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.StaffofEarth;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -19,6 +17,10 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.StaffofEarth);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 49;
+            Item.height = 49;
             Item.autoReuse = false;
             Item.mana = 100;
             Item.damage = 100;
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 42;
+            Projectile.height = 42;
             spawnedProjectileType = ProjectileID.BoulderStaffOfEarth;
             buffID = ModContent.BuffType<StaffOfEarthBuff>();
             projectileID = ModContent.ProjectileType<StaffOfEarthSpawner>();

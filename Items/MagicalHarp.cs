@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class MagicalHarp : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MagicalHarp;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -19,6 +17,10 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicalHarp);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 28;
+            Item.height = 38;
             Item.autoReuse = false;
             Item.mana = 50;
             Item.damage = 42;
@@ -57,6 +59,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 30;
             spawnedProjectileType = ProjectileID.EighthNote;
             buffID = ModContent.BuffType<MagicalHarpBuff>();
             projectileID = ModContent.ProjectileType<MagicalHarpSpawner>();

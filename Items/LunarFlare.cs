@@ -1,13 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class RazorbladeTyphoon : ModItem
+    public class LunarFlare : ModItem
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.LunarFlareBook;
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -15,25 +19,27 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.RazorbladeTyphoon);
+            Item.CloneDefaults(ItemID.LunarFlareBook);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 31;
-            Item.height = 30;
-            Item.autoReuse = false;
             Item.mana = 100;
-            Item.damage = 60;
-            Item.shoot = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();
-            Item.buffType = ModContent.BuffType<RazorbladeTyphoonBuff>();
+            Item.damage = 100;
+            Item.useTime = 16;
+            Item.width = 32;
+            Item.height = 32;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.autoReuse = false;
+            Item.UseSound = SoundID.Item1;
+            Item.shoot = ModContent.ProjectileType<LunarFlareSpawner>();
+            Item.buffType = ModContent.BuffType<LunarFlareBuff>();
             Item.shootSpeed = 10;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.RazorbladeTyphoon);
-            recipe.AddIngredient(ItemID.FragmentNebula);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddIngredient(ItemID.LunarFlareBook);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
 
@@ -44,31 +50,26 @@ namespace MagusClass.Items
             return true;
         }
     }
-
-    internal class RazorbladeTyphoonSpawner : SimpleProjectileSpawner
+    internal class LunarFlareSpawner : CallDownSpawner
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.RazorbladeTyphoon;
+        public override string Texture => "Terraria/Images/Item_" + ItemID.LunarFlareBook;
 
         public override void SetDefaults()
         {
             base.SetDefaults();
             Projectile.width = 28;
             Projectile.height = 30;
-            spawnedProjectileType = ProjectileID.Typhoon;
-            buffID = ModContent.BuffType<RazorbladeTyphoonBuff>();
-            projectileID = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();
-            coneRadius = 180;
-            spawnInterval = 6f;
-            sound = SoundID.Item84;
-            doSpin = true;
-            thrown = true;
+            buffID = ModContent.BuffType<LunarFlareBuff>();
+            projectileID = ModContent.ProjectileType<LunarFlareSpawner>();
+            possibleProjectiles = new int[] { ProjectileID.LunarFlare };
+            sound = SoundID.Item88;
         }
     }
 
-    internal class RazorbladeTyphoonBuff : MagusSpellBuff
+    internal class LunarFlareBuff : MagusSpellBuff
     {
         protected override int ManaCost => 100;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<RazorbladeTyphoonSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<LunarFlareSpawner>() };
     }
 }

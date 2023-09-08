@@ -16,6 +16,10 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.Vilethorn);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 32;
+            Item.height = 32;
             Item.mana = 30;
             Item.damage = 5;
             Item.shoot = ModContent.ProjectileType<VilethornSpawner>();

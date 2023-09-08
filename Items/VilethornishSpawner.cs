@@ -19,6 +19,8 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
+            Projectile.width = 32;
+            Projectile.height = 32;
             Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
@@ -44,6 +46,11 @@ namespace MagusClass.Items
             }
             Projectile.ai[0]++;
             Projectile.rotation += 0.4f * Projectile.direction;
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            return false;
         }
 
         public override bool ShouldUpdatePosition()

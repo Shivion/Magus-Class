@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -7,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class GoldenShower : ModItem
+    public class BlizzardStaff : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -16,22 +17,26 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.GoldenShower);
-            Item.autoReuse = false;
+            Item.CloneDefaults(ItemID.BlizzardStaff);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 28;
-            Item.height = 32;
             Item.mana = 75;
-            Item.damage = 15;
-            Item.shoot = ModContent.ProjectileType<GoldenShowerSpawner>();
-            Item.buffType = ModContent.BuffType<GoldenShowerBuff>();
+            Item.damage = 58;
+            Item.useTime = 16;
+            Item.width = 62;
+            Item.height = 62;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.autoReuse = false;
+            Item.UseSound = SoundID.Item1;
+            Item.shoot = ModContent.ProjectileType<BlizzardStaffSpawner>();
+            Item.buffType = ModContent.BuffType<BlizzardStaffBuff>();
+            Item.shootSpeed = 10;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.GoldenShower);
+            recipe.AddIngredient(ItemID.BlizzardStaff);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -43,31 +48,25 @@ namespace MagusClass.Items
             return true;
         }
     }
-
-    internal class GoldenShowerSpawner : SimpleProjectileSpawner
+    internal class BlizzardStaffSpawner : CallDownSpawner
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.GoldenShower;
+        public override string Texture => "Terraria/Images/Item_" + ItemID.BlizzardStaff;
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.width = 28;
-            Projectile.height = 30;
-            spawnedProjectileType = ProjectileID.GoldenShowerFriendly;
-            buffID = ModContent.BuffType<GoldenShowerBuff>();
-            projectileID = ModContent.ProjectileType<GoldenShowerSpawner>();
-            coneRadius = 5;
-            spawnInterval = 6f;
-            sound = SoundID.Item13;
-            doSpin = false;
-            horizontalSprite = true;
+            Projectile.width = 58;
+            Projectile.height = 58;
+            buffID = ModContent.BuffType<BlizzardStaffBuff>();
+            projectileID = ModContent.ProjectileType<BlizzardStaffSpawner>();
+            possibleProjectiles = new int[] { ProjectileID.Blizzard };
+            sound = SoundID.Item28;
         }
     }
-
-    internal class GoldenShowerBuff : MagusSpellBuff
+    internal class BlizzardStaffBuff : MagusSpellBuff
     {
         protected override int ManaCost => 75;
         protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<GoldenShowerSpawner>() };
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<BlizzardStaffSpawner>() };
     }
 }

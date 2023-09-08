@@ -20,6 +20,9 @@ namespace MagusClass.Items
             Item.mana = 50;
             Item.damage = 15;
             Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 48;
+            Item.height = 24;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
@@ -47,50 +50,21 @@ namespace MagusClass.Items
     {
         public override string Texture => "Terraria/Images/Item_" + ItemID.AquaScepter;
 
-        Vector2 targetPosition;
-
-        public override void SetStaticDefaults()
-        {
-
-        }
-
         public override void SetDefaults()
         {
-            Projectile.aiStyle = 0;
-            Projectile.velocity = Vector2.Zero;
-            //AquaScepters cast count
-            Projectile.ai[0] = 0;
+            base.SetDefaults();
+            Projectile.width = 18;
+            Projectile.height = 48;
+            buffID = ModContent.BuffType<AquaScepterBuff>();
+            projectileID = ModContent.ProjectileType<AquaScepterSpawner>();
         }
 
         public override void AI()
         {
-            base.AI();
             KillExistingProjectiles();
+            base.AI();
 
-            bool reachedX = false;
-            bool reachedY = false;
-
-            //Move to mouse location on the first frame
-            if (Projectile.ai[2] == 1)
-            {
-                targetPosition = Main.MouseWorld;
-            }
-            else
-            {
-                if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
-                {
-                    Projectile.velocity.X = 0f;
-                    reachedX = true;
-                }
-                if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
-                {
-                    Projectile.velocity.Y = 0f;
-                    reachedY = true;
-                }
-
-            }
-
-            if (reachedX && reachedY)
+            if(Thrown())
             {
                 if (Projectile.ai[1] == 0 && Projectile.ai[0] > 5f)
                 {
@@ -113,11 +87,6 @@ namespace MagusClass.Items
                 Projectile.rotation += 0.1f * Projectile.direction;
                 Projectile.spriteDirection = 180;
             }
-            else
-            {
-                Projectile.rotation = Projectile.velocity.ToRotation();
-                Projectile.position += Projectile.velocity;
-            }
         }
 
         public override bool ShouldUpdatePosition()
@@ -125,6 +94,7 @@ namespace MagusClass.Items
             return false;
         }
     }
+
 
     internal class AquaScepterBuff : MagusSpellBuff
     {

@@ -16,6 +16,10 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.WaterBolt);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
+            Item.width = 30;
+            Item.height = 32;
             Item.mana = 50;
             Item.damage = 10;
             Item.shoot = ModContent.ProjectileType<WaterBoltSpawner>();
@@ -43,6 +47,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 30;
+            Projectile.height = 16;
             spawnedProjectileType = ProjectileID.WaterBolt;
             buffID = ModContent.BuffType<WaterBoltBuff>();
             projectileID = ModContent.ProjectileType<WaterBoltSpawner>();

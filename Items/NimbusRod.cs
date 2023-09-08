@@ -6,8 +6,10 @@ using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
-    public class CrimsonRod : ModItem
+    public class NimbusRod : ModItem
     {
+        public override string Texture => "Terraria/Images/Item_" + ItemID.NimbusRod;
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -15,21 +17,21 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.CrimsonRod);
+            Item.CloneDefaults(ItemID.NimbusRod);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 30;
-            Item.damage = 12;
+            Item.mana = 25;
+            Item.damage = 30;
             Item.width = 38;
             Item.height = 40;
-            Item.shoot = ModContent.ProjectileType<CrimsonRodCloudSeed>();
-            Item.buffType = ModContent.BuffType<CrimsonRodBuff>();
+            Item.shoot = ModContent.ProjectileType<NimbusRodCloudSeed>();
+            Item.buffType = ModContent.BuffType<NimbusRodBuff>();
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.CrimsonRod);
+            recipe.AddIngredient(ItemID.NimbusRod);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -43,9 +45,9 @@ namespace MagusClass.Items
     }
 
 
-    internal class CrimsonRodCloudSeed : ModProjectile
+    internal class NimbusRodCloudSeed : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.BloodCloudMoving;
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainCloudMoving;
 
         public override void SetStaticDefaults()
         {
@@ -54,7 +56,7 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Projectile.CloneDefaults(ProjectileID.BloodCloudMoving);
+            Projectile.CloneDefaults(ProjectileID.RainCloudMoving);
             Projectile.width = 24;
             Projectile.height = 24;
             Projectile.aiStyle = 0;
@@ -104,18 +106,17 @@ namespace MagusClass.Items
 
         public override void Kill(int timeLeft)
         {
-
             if (Main.myPlayer == Projectile.owner)
             {
-                int newProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<CrimsonRodCloud>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                int newProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<NimbusRodCloud>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, newProjectile);
             }
         }
     }
 
-    internal class CrimsonRodCloud : MagusProjectile
+    internal class NimbusRodCloud : MagusProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.BloodCloudRaining;
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainCloudRaining;
 
         public override void SetStaticDefaults()
         {
@@ -124,18 +125,17 @@ namespace MagusClass.Items
 
         public override void SetDefaults()
         {
-            Projectile.CloneDefaults(ProjectileID.BloodCloudRaining);
+            Projectile.CloneDefaults(ProjectileID.RainCloudRaining);
             Projectile.aiStyle = 0;
             Projectile.width = 54;
             Projectile.height = 24;
-            buffID = ModContent.BuffType<CrimsonRodBuff>();
-            projectileID = ModContent.ProjectileType<CrimsonRodCloud>();
+            buffID = ModContent.BuffType<NimbusRodBuff>();
+            projectileID = ModContent.ProjectileType<NimbusRodCloud>();
         }
 
         public override void AI()
         {
             base.AI();
-            KillExistingProjectiles();
 
             bool notColliding = true;
             int centerX = (int)Projectile.Center.X;
@@ -169,7 +169,7 @@ namespace MagusClass.Items
                     if (Projectile.owner == Main.myPlayer)
                     {
                         centerX += Main.rand.Next(-14, 15);
-                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, BottomY, 0f, 5f, 245, Projectile.damage, 0f, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), centerX, BottomY, 0f, 5f, ProjectileID.RainFriendly, Projectile.damage, 0f, Projectile.owner);
                     }
                 }
             }
@@ -187,10 +187,10 @@ namespace MagusClass.Items
         }
     }
 
-    internal class CrimsonRodBuff : MagusSpellBuff
+    internal class NimbusRodBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 30;
-        protected override bool MultipleSpellsAllowed => false;
-        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<CrimsonRodCloudSeed>(), ModContent.ProjectileType<CrimsonRodCloud>() };
+        protected override int ManaCost => 25;
+        protected override bool MultipleSpellsAllowed => true;
+        protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<NimbusRodCloudSeed>(), ModContent.ProjectileType<NimbusRodCloud>() };
     }
 }

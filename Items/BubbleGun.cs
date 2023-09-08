@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class BubbleGun : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.BubbleGun;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -25,6 +23,8 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.mana = 75;
             Item.damage = 70;
+            Item.width = 70;
+            Item.height = 31;
             Item.shoot = ModContent.ProjectileType<BubbleGunSpawner>();
             Item.buffType = ModContent.BuffType<BubbleGunBuff>();
 
@@ -60,6 +60,8 @@ namespace MagusClass.Items
         {
             base.SetDefaults();
             spawnedProjectileType = ProjectileID.Bubble;
+            Projectile.width = 70;
+            Projectile.height = 31;
             buffID = ModContent.BuffType<BubbleGunBuff>();
             projectileID = ModContent.ProjectileType<BubbleGunSpawner>();
             coneRadius = 15;

@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.Chat.Commands;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,8 +16,8 @@ namespace MagusClass.Items
             Projectile.penetrate = -1;
             Projectile.aiStyle = 0;
             Projectile.velocity = Vector2.Zero;
-            Projectile.height = 16;
-            Projectile.width = 16;
+            Projectile.height = 28;
+            Projectile.width = 24;
             spawnedProjectileType = ProjectileID.BallofFire;
             projectileID = ModContent.ProjectileType<FlowerOfFireSpawner>();
             buffID = ModContent.BuffType<FlowerOfFireBuff>();
@@ -29,7 +26,7 @@ namespace MagusClass.Items
         public override void OnSpawn(IEntitySource source)
         {
             Player player = Main.player[Projectile.owner];
-            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0,Projectile.height + 10);
+            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0,Projectile.height);
             base.OnSpawn(source);
         }
 

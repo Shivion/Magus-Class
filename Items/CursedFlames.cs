@@ -9,8 +9,6 @@ namespace MagusClass.Items
 {
     public class CursedFlames : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.CursedFlames;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -19,9 +17,13 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CursedFlames);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.autoReuse = false;
             Item.mana = 50;
             Item.damage = 25;
+            Item.width = 37;
+            Item.height = 33;
             Item.shoot = ModContent.ProjectileType<CursedFlamesSpawner>();
             Item.buffType = ModContent.BuffType<CursedFlamesBuff>();
         }
@@ -49,6 +51,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 28;
+            Projectile.height = 32;
             spawnedProjectileType = ProjectileID.CursedFlameFriendly;
             buffID = ModContent.BuffType<CursedFlamesBuff>();
             projectileID = ModContent.ProjectileType<CursedFlamesSpawner>();

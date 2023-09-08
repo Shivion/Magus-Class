@@ -17,8 +17,12 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.CrystalVileShard);
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.mana = 50;
             Item.damage = 20;
+            Item.width = 35;
+            Item.height = 35;
             Item.shoot = ModContent.ProjectileType<CrystalVileShardSpawner>();
             Item.buffType = ModContent.BuffType<CrystalVileShardBuff>();
         }
@@ -46,6 +50,8 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.width = 32;
+            Projectile.height = 32;
             spawnedProjectileType = ProjectileID.CrystalVileShardShaft;
             buffID = ModContent.BuffType<CrystalVileShardBuff>();
             projectileID = ModContent.ProjectileType<CrystalVileShardSpawner>();
