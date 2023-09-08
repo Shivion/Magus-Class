@@ -48,6 +48,11 @@ namespace MagusClass.Items
             Projectile.rotation += 0.4f * Projectile.direction;
         }
 
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            return false;
+        }
+
         public override bool ShouldUpdatePosition()
         {
             return false;

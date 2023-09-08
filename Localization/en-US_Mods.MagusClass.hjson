@@ -90,6 +90,11 @@ Items: {
 		DisplayName: Nimbus Rod
 		Tooltip: ""
 	}
+
+	InfernoFork: {
+		DisplayName: Inferno Fork
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -113,6 +118,7 @@ Projectiles: {
 	LunarFlareSpawner.DisplayName: Lunar Flare Spawner
 	NimbusRodCloud.DisplayName: Nimbus Rod Cloud
 	NimbusRodCloudSeed.DisplayName: Nimbus Rod Cloud Seed
+	InfernoForkSpawner.DisplayName: Inferno Fork Spawner
 }
 
 Buffs: {
@@ -204,5 +210,10 @@ Buffs: {
 	NimbusRodBuff: {
 		DisplayName: Nimbus Rod Buff
 		Description: Mods.MagusClass.Buffs.NimbusRodBuff.Description
+	}
+
+	InfernoForkBuff: {
+		DisplayName: Inferno Fork Buff
+		Description: Mods.MagusClass.Buffs.InfernoForkBuff.Description
 	}
 }
