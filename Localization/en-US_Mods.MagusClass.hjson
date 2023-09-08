@@ -95,6 +95,11 @@ Items: {
 		DisplayName: Inferno Fork
 		Tooltip: ""
 	}
+
+	RainbowGun: {
+		DisplayName: Rainbow Gun
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -119,6 +124,8 @@ Projectiles: {
 	NimbusRodCloud.DisplayName: Nimbus Rod Cloud
 	NimbusRodCloudSeed.DisplayName: Nimbus Rod Cloud Seed
 	InfernoForkSpawner.DisplayName: Inferno Fork Spawner
+	RainbowGunBack.DisplayName: Rainbow Gun Back
+	RainbowGunFront.DisplayName: Rainbow Gun Front
 }
 
 Buffs: {
@@ -215,5 +222,10 @@ Buffs: {
 	InfernoForkBuff: {
 		DisplayName: Inferno Fork Buff
 		Description: Mods.MagusClass.Buffs.InfernoForkBuff.Description
+	}
+
+	RainbowGunBuff: {
+		DisplayName: Rainbow Gun Buff
+		Description: Mods.MagusClass.Buffs.RainbowGunBuff.Description
 	}
 }
