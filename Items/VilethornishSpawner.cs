@@ -50,6 +50,7 @@ namespace MagusClass.Items
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+            Projectile.velocity = oldVelocity;
             return false;
         }
 

@@ -22,7 +22,7 @@ namespace MagusClass.Items
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.width = 48;
-            Item.height = 24;
+            Item.height = 18;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
