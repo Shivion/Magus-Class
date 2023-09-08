@@ -22,6 +22,7 @@ namespace MagusClass.Items
             Item.height = 32;
             Item.mana = 50;
             Item.damage = 10;
+            Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<WaterBoltSpawner>();
             Item.buffType = ModContent.BuffType<WaterBoltBuff>();
         }
