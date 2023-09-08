@@ -100,6 +100,11 @@ Items: {
 		DisplayName: Rainbow Gun
 		Tooltip: ""
 	}
+
+	SpiritFlame: {
+		DisplayName: Spirit Flame
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -126,6 +131,7 @@ Projectiles: {
 	InfernoForkSpawner.DisplayName: Inferno Fork Spawner
 	RainbowGunBack.DisplayName: Rainbow Gun Back
 	RainbowGunFront.DisplayName: Rainbow Gun Front
+	SpiritFlameSpawner.DisplayName: Spirit Flame Spawner
 }
 
 Buffs: {
@@ -227,5 +233,10 @@ Buffs: {
 	RainbowGunBuff: {
 		DisplayName: Rainbow Gun Buff
 		Description: Mods.MagusClass.Buffs.RainbowGunBuff.Description
+	}
+
+	SpiritFlameBuff: {
+		DisplayName: Spirit Flame Buff
+		Description: Mods.MagusClass.Buffs.SpiritFlameBuff.Description
 	}
 }
