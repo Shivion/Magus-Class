@@ -21,7 +21,6 @@ namespace MagusClass.Items
         {
             Projectile.netImportant = true;
             Projectile.aiStyle = 0;
-            Projectile.velocity = Vector2.Zero;
         }
 
         public override void AI()
