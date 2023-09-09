@@ -25,8 +25,8 @@ namespace MagusClass.Items
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.width = 50;
-            Item.height = 18;
+            Item.width = 56;
+            Item.height = 30;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<RainbowGunFront>();
             Item.buffType = ModContent.BuffType<RainbowGunBuff>();
