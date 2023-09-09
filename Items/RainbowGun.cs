@@ -170,7 +170,7 @@ namespace MagusClass.Items
                 Projectile.localAI[0] = 1f;
             }
 
-            if (Projectile.ai[1] != 1 && Projectile.alpha > 150)
+            if (Projectile.ai[1] != 1 && Projectile.alpha > 0)
             {
                   Projectile.alpha -= 10;
             }
@@ -178,7 +178,11 @@ namespace MagusClass.Items
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color((255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, 255 - Projectile.alpha);
+            //return new Color((255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, 255 - Projectile.alpha);
+            int r = 255 - Projectile.alpha;
+            int g = 255 - Projectile.alpha;
+            int b = 255 - Projectile.alpha;
+            return new Color(r, g, b, 0);
         }
 
         public override bool ShouldUpdatePosition()
