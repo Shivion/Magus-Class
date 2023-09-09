@@ -14,7 +14,7 @@ namespace MagusClass.Items
 
         public override void SetStaticDefaults()
         {
-            Item.staff[Item.type] = true;
+            Item.staff[Item.type] = false;
         }
 
         public override void SetDefaults()
@@ -24,6 +24,7 @@ namespace MagusClass.Items
             Item.damage = 45;
             Item.useTime = 16;
             Item.useAnimation = 16;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.width = 50;
             Item.height = 18;
             Item.autoReuse = false;
@@ -46,9 +47,9 @@ namespace MagusClass.Items
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == ModContent.ProjectileType<RainbowGunBack>() && Main.projectile[i].ai[1] < 1)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && (Main.projectile[i].type == ModContent.ProjectileType<RainbowGunBack>() || Main.projectile[i].type == ModContent.ProjectileType<RainbowGunFront>()) && Main.projectile[i].ai[1] < 1)
                     {
-                        Main.projectile[i].ai[1] = 1;
+                        Main.projectile[i].Kill();
                     }
                 }
             }
@@ -169,7 +170,7 @@ namespace MagusClass.Items
                 Projectile.localAI[0] = 1f;
             }
 
-            if (Projectile.ai[1] != 1 && Projectile.alpha > 50)
+            if (Projectile.ai[1] != 1 && Projectile.alpha > 0)
             {
                   Projectile.alpha -= 10;
             }
@@ -177,7 +178,11 @@ namespace MagusClass.Items
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha);
+            //return new Color((255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, (255 - Projectile.alpha) * 2, 255 - Projectile.alpha);
+            int r = 255 - Projectile.alpha;
+            int g = 255 - Projectile.alpha;
+            int b = 255 - Projectile.alpha;
+            return new Color(r, g, b, 0);
         }
 
         public override bool ShouldUpdatePosition()
