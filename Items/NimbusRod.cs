@@ -22,8 +22,8 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.mana = 25;
             Item.damage = 30;
-            Item.width = 38;
-            Item.height = 40;
+            Item.width = 46;
+            Item.height = 46;
             Item.shoot = ModContent.ProjectileType<NimbusRodCloudSeed>();
             Item.buffType = ModContent.BuffType<NimbusRodBuff>();
         }

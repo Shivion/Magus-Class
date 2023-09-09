@@ -25,8 +25,8 @@ namespace MagusClass.Items
             Item.mana = 100;
             Item.damage = 100;
             Item.useTime = 16;
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 38;
+            Item.height = 38;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
