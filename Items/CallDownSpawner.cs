@@ -70,8 +70,8 @@ namespace MagusClass.Items
                         //launch projectile
                         int newProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), startPoisition.X, startPoisition.Y, velocity.X * 0.75f, velocity.Y * 0.75f, Main.rand.NextFromList(possibleProjectiles), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, (float)Main.rand.NextDouble() * 0.3f);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, newProjectile);
-                        SoundEngine.PlaySound(sound, Projectile.position);
                     }
+                    SoundEngine.PlaySound(sound, Projectile.position);
                     Projectile.ai[0] = Main.rand.Next(0, 2);
                 }
                 Projectile.ai[0]++;

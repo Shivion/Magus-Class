@@ -22,7 +22,7 @@ namespace MagusClass.Items
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.width = 48;
-            Item.height = 24;
+            Item.height = 18;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
@@ -78,8 +78,8 @@ namespace MagusClass.Items
                         sprayVelocity = sprayVelocity * 10;
                         int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), farX, centerY, sprayVelocity.X, sprayVelocity.Y, ProjectileID.WaterStream, Projectile.damage, Projectile.knockBack, Projectile.owner);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
-                        SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
                     }
+                    SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
                     Projectile.ai[0] = Main.rand.Next(0, 2);
                 }
                 Projectile.ai[0]++;

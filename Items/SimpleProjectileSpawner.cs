@@ -44,8 +44,8 @@ namespace MagusClass.Items
                         Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.ToRadians(offset) * Projectile.direction);
                         int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), X, Y, perturbedSpeed.X, perturbedSpeed.Y, spawnedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
-                        SoundEngine.PlaySound(sound, Projectile.position);
                     }
+                    SoundEngine.PlaySound(sound, Projectile.position);
                     Projectile.ai[0] = 0;
                 }
                 Projectile.ai[0]++;

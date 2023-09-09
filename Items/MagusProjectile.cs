@@ -1,6 +1,8 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items
@@ -28,19 +30,18 @@ namespace MagusClass.Items
             //duration timer, used to get the oldest projectile
             Projectile.ai[2]++;
 
-            Player player = Main.player[Projectile.owner];
-            //Kill all projectiles without the buff
-            if (player.dead || !player.active)
+            if (Projectile.owner == Main.myPlayer)
             {
-                player.ClearBuff(buffID);
-            }
-            if (!player.HasBuff(buffID))
-            {
-                Projectile.ai[1] = 1;
-            }
-            else
-            {
-                Projectile.timeLeft = 3600;
+                Player player = Main.player[Projectile.owner];
+                //Kill all projectiles without the buff
+                if (player.dead || !player.active)
+                {
+                    player.ClearBuff(buffID);
+                }
+                if (!player.HasBuff(buffID))
+                {
+                    Projectile.ai[1] = 1;
+                }
             }
 
             if (Projectile.ai[1] == 1)
@@ -52,6 +53,10 @@ namespace MagusClass.Items
                     Projectile.Kill();
                 }
                 return;
+            }
+            else
+            {
+                Projectile.timeLeft = 3600;
             }
         }
 
@@ -82,11 +87,15 @@ namespace MagusClass.Items
             //Move to mouse location on the first frame
             if (Projectile.ai[2] == 1)
             {
-                targetPosition = Main.MouseWorld;
+                if(Projectile.owner == Main.myPlayer)
+                {
+                    targetPosition = Main.MouseWorld;
+                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
+                }
             }
             else
             {
-                if (Projectile.velocity.X == 0f || (Projectile.velocity.X< 0f && Projectile.Center.X<targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
+                if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
                 {
                     reachedX = true;
                 }
@@ -103,7 +112,7 @@ namespace MagusClass.Items
                     Projectile.position.Y += Projectile.velocity.Y * 2;
                 }
 
-                if(reachedX && reachedY)
+                if (reachedX && reachedY)
                 {
                     return true;
                 }
@@ -114,6 +123,16 @@ namespace MagusClass.Items
             }
             return false;
 
+        }
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.WritePackedVector2(targetPosition);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            targetPosition = reader.ReadPackedVector2();
         }
     }
 }

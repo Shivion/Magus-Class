@@ -100,6 +100,16 @@ Items: {
 		DisplayName: Rainbow Gun
 		Tooltip: ""
 	}
+
+	SpiritFlame: {
+		DisplayName: Spirit Flame
+		Tooltip: ""
+	}
+
+	MedusaHead: {
+		DisplayName: Medusa Head
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -126,6 +136,9 @@ Projectiles: {
 	InfernoForkSpawner.DisplayName: Inferno Fork Spawner
 	RainbowGunBack.DisplayName: Rainbow Gun Back
 	RainbowGunFront.DisplayName: Rainbow Gun Front
+	SpiritFlameSpawner.DisplayName: Spirit Flame Spawner
+	MedusaHeadSpawner.DisplayName: Medusa Head Spawner
+	MedusaHeadRay.DisplayName: Medusa Head Ray
 }
 
 Buffs: {
@@ -227,5 +240,15 @@ Buffs: {
 	RainbowGunBuff: {
 		DisplayName: Rainbow Gun Buff
 		Description: Mods.MagusClass.Buffs.RainbowGunBuff.Description
+	}
+
+	SpiritFlameBuff: {
+		DisplayName: Spirit Flame Buff
+		Description: Mods.MagusClass.Buffs.SpiritFlameBuff.Description
+	}
+
+	MedusaHeadBuff: {
+		DisplayName: Medusa Head Buff
+		Description: Mods.MagusClass.Buffs.MedusaHeadBuff.Description
 	}
 }
