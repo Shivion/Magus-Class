@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Items\BlizzardStaffBuff.png" />
     <None Remove="Items\LunarFlareBuff.png" />
+    <None Remove="Items\MagnetSphereBuff.png" />
     <None Remove="Items\MedusaHeadBuff.png" />
     <None Remove="Items\MeteorStaffBuff.png" />
     <None Remove="Items\SpiritFlameBuff.png" />

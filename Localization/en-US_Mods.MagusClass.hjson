@@ -110,6 +110,11 @@ Items: {
 		DisplayName: Medusa Head
 		Tooltip: ""
 	}
+
+	MagnetSphere: {
+		DisplayName: Magnet Sphere
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -139,6 +144,7 @@ Projectiles: {
 	SpiritFlameSpawner.DisplayName: Spirit Flame Spawner
 	MedusaHeadSpawner.DisplayName: Medusa Head Spawner
 	MedusaHeadRay.DisplayName: Medusa Head Ray
+	MagnetSphereSpawner.DisplayName: Magnet Sphere Spawner
 }
 
 Buffs: {
@@ -250,5 +256,10 @@ Buffs: {
 	MedusaHeadBuff: {
 		DisplayName: Medusa Head Buff
 		Description: Mods.MagusClass.Buffs.MedusaHeadBuff.Description
+	}
+
+	MagnetSphereBuff: {
+		DisplayName: Magnet Sphere Buff
+		Description: Mods.MagusClass.Buffs.MagnetSphereBuff.Description
 	}
 }

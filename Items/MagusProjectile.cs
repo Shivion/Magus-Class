@@ -12,7 +12,7 @@ namespace MagusClass.Items
         protected int buffID;
         protected int projectileID;
 
-        private Vector2 targetPosition;
+        protected Vector2 targetPosition;
 
         public override void SetStaticDefaults()
         {
@@ -58,6 +58,16 @@ namespace MagusClass.Items
             {
                 Projectile.timeLeft = 3600;
             }
+
+            //Capture mouse location on the first frame
+            if (Projectile.ai[2] == 1)
+            {
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    targetPosition = Main.MouseWorld;
+                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
+                }
+            }
         }
 
         public void KillExistingProjectiles()
@@ -84,45 +94,33 @@ namespace MagusClass.Items
             bool reachedX = false;
             bool reachedY = false;
 
-            //Move to mouse location on the first frame
-            if (Projectile.ai[2] == 1)
+            //Move to mouse location and stop
+            if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
             {
-                if(Projectile.owner == Main.myPlayer)
-                {
-                    targetPosition = Main.MouseWorld;
-                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
-                }
+                reachedX = true;
             }
             else
             {
-                if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
-                {
-                    reachedX = true;
-                }
-                else
-                {
-                    Projectile.position.X += Projectile.velocity.X * 2;
-                }
-                if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
-                {
-                    reachedY = true;
-                }
-                else
-                {
-                    Projectile.position.Y += Projectile.velocity.Y * 2;
-                }
+                Projectile.position.X += Projectile.velocity.X * 2;
+            }
+            if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
+            {
+                reachedY = true;
+            }
+            else
+            {
+                Projectile.position.Y += Projectile.velocity.Y * 2;
+            }
 
-                if (reachedX && reachedY)
-                {
-                    return true;
-                }
-                else
-                {
-                    Projectile.rotation = Projectile.velocity.ToRotation();
-                }
+            if (reachedX && reachedY)
+            {
+                return true;
+            }
+            else
+            {
+                Projectile.rotation = Projectile.velocity.ToRotation();
             }
             return false;
-
         }
 
         public override void SendExtraAI(BinaryWriter writer)
