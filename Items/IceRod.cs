@@ -77,11 +77,11 @@ namespace MagusClass.Items
             int TileX = (int)Projectile.Center.X / 16;
             int TileY = (int)Projectile.Center.Y / 16;
             Tile tile = Main.tile[TileX, TileY];
-            if (Projectile.lavaWet 
+            if (Projectile.lavaWet
                 || (tile != null
                 && tile.HasUnactuatedTile
-                && tile.TileType != ModContent.TileType<IceRodTile>() 
-                && Main.tileSolid[tile.TileType] 
+                && tile.TileType != ModContent.TileType<IceRodTile>()
+                && Main.tileSolid[tile.TileType]
                 && !Main.tileSolidTop[tile.TileType]))
             {
                 KillWithoutPlacing();
@@ -91,7 +91,7 @@ namespace MagusClass.Items
             int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 0.3f;
-            
+
             if (Projectile.velocity.X > 0f)
             {
                 Projectile.rotation += 0.3f;
@@ -160,7 +160,7 @@ namespace MagusClass.Items
             IceRodTileEntity advancedEntity = ModContent.GetInstance<IceRodTileEntity>();
             TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.Width = 1;
-            TileObjectData.newTile.Height = 1; 
+            TileObjectData.newTile.Height = 1;
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.LavaDeath = true;
             TileObjectData.addTile(Type);

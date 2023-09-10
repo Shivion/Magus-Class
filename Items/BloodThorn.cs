@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -74,7 +72,7 @@ namespace MagusClass.Items
             base.AI();
 
 
-            if (Thrown(1,false))
+            if (Thrown(1, false))
             {
                 if (Projectile.ai[2] == 0 && Projectile.ai[0] > 15f)
                 {
@@ -87,7 +85,7 @@ namespace MagusClass.Items
                         int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), vector19.X, vector19.Y, vector20.X, vector20.Y, ProjectileID.SharpTears, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, Main.rand.NextFloat() * 0.5f + 0.6f);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
                     }
-                    SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
+                    //SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
                     Projectile.ai[0] = Main.rand.Next(0, 5);
                 }
                 Projectile.ai[0]++;

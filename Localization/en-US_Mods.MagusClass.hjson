@@ -130,6 +130,16 @@ Items: {
 		DisplayName: Blood Thorn
 		Tooltip: ""
 	}
+
+	ChargedBlasterCannon: {
+		DisplayName: Charged Blaster Cannon
+		Tooltip: ""
+	}
+
+	LastPrism: {
+		DisplayName: Last Prism
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -163,6 +173,11 @@ Projectiles: {
 	IceRodSpawner.DisplayName: Ice Rod Spawner
 	ClingerStaffSpawner.DisplayName: Clinger Staff Spawner
 	BloodThornSpawner.DisplayName: Blood Thorn Spawner
+	ChargedBlasterCannonSpawner.DisplayName: Charged Blaster Cannon Spawner
+	ChargedBlasterCannonLaser.DisplayName: Charged Blaster Cannon Laser
+	LastPrismHoldout.DisplayName: Last Prism Holdout
+	LastPrismLaser.DisplayName: Last Prism Laser
+	ChargedBlasterCannonHoldout.DisplayName: Charged Blaster Cannon Holdout
 }
 
 Buffs: {
@@ -294,5 +309,15 @@ Buffs: {
 	BloodThornBuff: {
 		DisplayName: Blood Thorn Buff
 		Description: Mods.MagusClass.Buffs.BloodThornBuff.Description
+	}
+
+	ChargedBlasterCannonBuff: {
+		DisplayName: Charged Blaster Cannon Buff
+		Description: Mods.MagusClass.Buffs.ChargedBlasterCannonBuff.Description
+	}
+
+	LastPrismBuff: {
+		DisplayName: Last Prism Buff
+		Description: Mods.MagusClass.Buffs.LastPrismBuff.Description
 	}
 }
