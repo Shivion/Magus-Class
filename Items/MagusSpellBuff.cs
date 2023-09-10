@@ -8,6 +8,7 @@ namespace MagusClass.Items
         protected abstract int ManaCost { get; }
         protected abstract bool MultipleSpellsAllowed { get; }
         protected abstract int[] ProjectileTypes { get; }
+        protected virtual bool IsIceRod { get { return false; } }
 
         public override void SetStaticDefaults()
         {
@@ -21,6 +22,10 @@ namespace MagusClass.Items
             for (int i = 0; i < ProjectileTypes.Length; i++)
             {
                 activeSpells += player.ownedProjectileCounts[ProjectileTypes[i]];
+            }
+            if (IsIceRod)
+            {
+                activeSpells += IceRodTileEntity.GetIceRodTileEntitiesByOwner(player.whoAmI).Count;
             }
             if (activeSpells > 0)
             {

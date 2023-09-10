@@ -26,7 +26,7 @@ namespace MagusClass.Items
         public override void OnSpawn(IEntitySource source)
         {
             Player player = Main.player[Projectile.owner];
-            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0,Projectile.height);
+            Projectile.position = ShivUtilities.FindRestingSpot(player.position) - new Vector2(0, Projectile.height);
             base.OnSpawn(source);
         }
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -89,7 +88,7 @@ namespace MagusClass.Items
             }
         }
 
-        public bool Thrown()
+        public bool Thrown(float speedModifier = 1, bool doRotation = true)
         {
             bool reachedX = false;
             bool reachedY = false;
@@ -101,7 +100,7 @@ namespace MagusClass.Items
             }
             else
             {
-                Projectile.position.X += Projectile.velocity.X * 2;
+                Projectile.position.X += Projectile.velocity.X * speedModifier;
             }
             if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
             {
@@ -109,14 +108,14 @@ namespace MagusClass.Items
             }
             else
             {
-                Projectile.position.Y += Projectile.velocity.Y * 2;
+                Projectile.position.Y += Projectile.velocity.Y * speedModifier;
             }
 
             if (reachedX && reachedY)
             {
                 return true;
             }
-            else
+            else if (doRotation)
             {
                 Projectile.rotation = Projectile.velocity.ToRotation();
             }

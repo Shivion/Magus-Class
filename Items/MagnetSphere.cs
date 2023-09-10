@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -93,7 +91,7 @@ namespace MagusClass.Items
             }
 
             //Get target
-            if(Projectile.owner == Main.myPlayer)
+            if (Projectile.owner == Main.myPlayer)
             {
                 int[] targets = new int[20];
                 int targetIndex = 0;
@@ -148,7 +146,7 @@ namespace MagusClass.Items
         {
             return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
         }
-					
+
     }
 
     internal class MagnetSphereBuff : MagusSpellBuff

@@ -64,7 +64,7 @@ namespace MagusClass.Items
             KillExistingProjectiles();
             base.AI();
 
-            if(Thrown())
+            if (Thrown())
             {
                 if (Projectile.ai[1] == 0 && Projectile.ai[0] > 5f)
                 {

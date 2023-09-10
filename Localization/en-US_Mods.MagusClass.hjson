@@ -115,6 +115,11 @@ Items: {
 		DisplayName: Magnet Sphere
 		Tooltip: ""
 	}
+
+	IceRod: {
+		DisplayName: Ice Rod
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -145,6 +150,7 @@ Projectiles: {
 	MedusaHeadSpawner.DisplayName: Medusa Head Spawner
 	MedusaHeadRay.DisplayName: Medusa Head Ray
 	MagnetSphereSpawner.DisplayName: Magnet Sphere Spawner
+	IceRodSpawner.DisplayName: Ice Rod Spawner
 }
 
 Buffs: {
@@ -261,5 +267,10 @@ Buffs: {
 	MagnetSphereBuff: {
 		DisplayName: Magnet Sphere Buff
 		Description: Mods.MagusClass.Buffs.MagnetSphereBuff.Description
+	}
+
+	IceRodBuff: {
+		DisplayName: Ice Rod Buff
+		Description: Mods.MagusClass.Buffs.IceRodBuff.Description
 	}
 }

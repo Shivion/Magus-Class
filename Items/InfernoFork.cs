@@ -52,7 +52,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.friendly = true; 
+            Projectile.friendly = true;
             DrawOffsetX = -52;
             DrawOriginOffsetY = -10;
             DrawOriginOffsetX = 17;
