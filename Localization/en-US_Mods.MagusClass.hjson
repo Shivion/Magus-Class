@@ -125,6 +125,11 @@ Items: {
 		DisplayName: Clinger Staff
 		Tooltip: ""
 	}
+
+	BloodThorn: {
+		DisplayName: Blood Thorn
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -157,6 +162,7 @@ Projectiles: {
 	MagnetSphereSpawner.DisplayName: Magnet Sphere Spawner
 	IceRodSpawner.DisplayName: Ice Rod Spawner
 	ClingerStaffSpawner.DisplayName: Clinger Staff Spawner
+	BloodThornSpawner.DisplayName: Blood Thorn Spawner
 }
 
 Buffs: {
@@ -283,5 +289,10 @@ Buffs: {
 	ClingerStaffBuff: {
 		DisplayName: Clinger Staff Buff
 		Description: Mods.MagusClass.Buffs.ClingerStaffBuff.Description
+	}
+
+	BloodThornBuff: {
+		DisplayName: Blood Thorn Buff
+		Description: Mods.MagusClass.Buffs.BloodThornBuff.Description
 	}
 }
