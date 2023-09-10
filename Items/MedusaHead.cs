@@ -166,7 +166,7 @@ namespace MagusClass.Items
                         num3 = (num2 != 0) ? (num3 / num2) : ((float)0f);
                         for (int l = 0; l < 4; l++)
                         {
-                            Vector2 randomDirection = ((Main.rand.NextBool(4)) ? (Vector2.UnitX.RotatedByRandom(Math.PI*2) * new Vector2(200f, 50f) * (Main.rand.NextFloat() * 0.7f + 0.3f)) : (Vector2.UnitX.RotatedByRandom(Math.PI).RotatedBy(num3) * new Vector2(200f, 50f) * (Main.rand.NextFloat() * 0.7f + 0.3f)));
+                            Vector2 randomDirection = ((Main.rand.NextBool(4)) ? (Vector2.UnitX.RotatedByRandom(Math.PI * 2) * new Vector2(200f, 50f) * (Main.rand.NextFloat() * 0.7f + 0.3f)) : (Vector2.UnitX.RotatedByRandom(Math.PI).RotatedBy(num3) * new Vector2(200f, 50f) * (Main.rand.NextFloat() * 0.7f + 0.3f)));
                             Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), position.X, position.Y, randomDirection.X, randomDirection.Y, ModContent.ProjectileType<MedusaHeadRay>(), 0, 0f, Projectile.owner, Projectile.whoAmI);
                         }
                         Projectile.ai[0] = 60f;

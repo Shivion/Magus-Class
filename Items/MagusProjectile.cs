@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +11,7 @@ namespace MagusClass.Items
         protected int buffID;
         protected int projectileID;
 
-        private Vector2 targetPosition;
+        protected Vector2 targetPosition;
 
         public override void SetStaticDefaults()
         {
@@ -27,8 +26,7 @@ namespace MagusClass.Items
 
         public override void AI()
         {
-            //duration timer, used to get the oldest projectile
-            Projectile.ai[2]++;
+            Projectile.localAI[2]++;
 
             if (Projectile.owner == Main.myPlayer)
             {
@@ -40,14 +38,14 @@ namespace MagusClass.Items
                 }
                 if (!player.HasBuff(buffID))
                 {
-                    Projectile.ai[1] = 1;
+                    Projectile.ai[2] = 1;
                 }
             }
 
-            if (Projectile.ai[1] == 1)
+            if (Projectile.ai[2] == 1)
             {
                 Projectile.alpha += 5;
-                if (Projectile.alpha > 255)
+                if (Projectile.alpha >= 255)
                 {
                     Projectile.alpha = 255;
                     Projectile.Kill();
@@ -57,6 +55,13 @@ namespace MagusClass.Items
             else
             {
                 Projectile.timeLeft = 3600;
+            }
+
+            //Capture mouse location on the first frame
+            if (Projectile.owner == Main.myPlayer && Projectile.localAI[2] == 1)
+            {
+                targetPosition = Main.MouseWorld;
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
             }
         }
 
@@ -68,61 +73,49 @@ namespace MagusClass.Items
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[1] < 1)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[2] < 1)
                     {
-                        if (Main.projectile[i].ai[2] > Projectile.ai[2])
+                        if (Main.projectile[i].localAI[2] > Projectile.localAI[2])
                         {
-                            Main.projectile[i].ai[1] = 1;
+                            Main.projectile[i].ai[2] = 1;
                         }
                     }
                 }
             }
         }
 
-        public bool Thrown()
+        public bool Thrown(float speedModifier = 1, bool doRotation = true)
         {
             bool reachedX = false;
             bool reachedY = false;
 
-            //Move to mouse location on the first frame
-            if (Projectile.ai[2] == 1)
+            //Move to mouse location and stop
+            if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
             {
-                if(Projectile.owner == Main.myPlayer)
-                {
-                    targetPosition = Main.MouseWorld;
-                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
-                }
+                reachedX = true;
             }
             else
             {
-                if (Projectile.velocity.X == 0f || (Projectile.velocity.X < 0f && Projectile.Center.X < targetPosition.X) || (Projectile.velocity.X > 0f && Projectile.Center.X > targetPosition.X))
-                {
-                    reachedX = true;
-                }
-                else
-                {
-                    Projectile.position.X += Projectile.velocity.X * 2;
-                }
-                if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
-                {
-                    reachedY = true;
-                }
-                else
-                {
-                    Projectile.position.Y += Projectile.velocity.Y * 2;
-                }
+                Projectile.position.X += Projectile.velocity.X * speedModifier;
+            }
+            if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
+            {
+                reachedY = true;
+            }
+            else
+            {
+                Projectile.position.Y += Projectile.velocity.Y * speedModifier;
+            }
 
-                if (reachedX && reachedY)
-                {
-                    return true;
-                }
-                else
-                {
-                    Projectile.rotation = Projectile.velocity.ToRotation();
-                }
+            if (reachedX && reachedY)
+            {
+                return true;
+            }
+            else if (doRotation)
+            {
+                Projectile.rotation = Projectile.velocity.ToRotation();
             }
             return false;
-
         }
 
         public override void SendExtraAI(BinaryWriter writer)

@@ -43,8 +43,8 @@ namespace MagusClass.Items
     }
 
     class FlowerOfFireSpawner : FlowerOfSomethingSpawner
-    { 
-    
+    {
+
     }
 
     class FlowerOfFireBuff : MagusSpellBuff

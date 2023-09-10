@@ -1,10 +1,8 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace MagusClass.Items
 {
@@ -20,7 +18,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Projectile.aiStyle = 0;
-            Projectile.penetrate = -1; 
+            Projectile.penetrate = -1;
         }
 
         public override void AI()
@@ -30,7 +28,7 @@ namespace MagusClass.Items
 
             if (Thrown())
             {
-                if (Projectile.ai[1] == 0 && Projectile.ai[0] > spawnFrequency)
+                if (Projectile.ai[2] == 0 && Projectile.ai[0] > spawnFrequency)
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {
@@ -40,7 +38,7 @@ namespace MagusClass.Items
                         float speed = 5;
 
                         //Assign starting position
-                        startPoisition.X = (startPoisition.X + Projectile.Center.X) / 2f + (float)Main.rand.Next(-horizontalSpawnSpread, horizontalSpawnSpread+1);
+                        startPoisition.X = (startPoisition.X + Projectile.Center.X) / 2f + (float)Main.rand.Next(-horizontalSpawnSpread, horizontalSpawnSpread + 1);
                         startPoisition.Y -= 500;
 
                         //assign velocity
