@@ -35,7 +35,7 @@ namespace MagusClass.Items
             base.AI();
             KillExistingProjectiles();
 
-            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 10f && (spawnedProjectile < 0 || Main.projectile[spawnedProjectile].alpha >= 255))
+            if (Projectile.ai[2] == 0 && Projectile.ai[0] > 10f && (spawnedProjectile < 0 || Main.projectile[spawnedProjectile].alpha >= 255))
             {
                 if (Main.myPlayer == Projectile.owner)
                 {

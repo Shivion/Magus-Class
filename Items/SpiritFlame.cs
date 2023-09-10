@@ -82,7 +82,7 @@ namespace MagusClass.Items
 
             //Shoot
             Projectile.rotation = 0f;
-            if (Projectile.ai[1] == 0 && Projectile.ai[0] > 60f)
+            if (Projectile.ai[2] == 0 && Projectile.ai[0] > 60f)
             {
                 if (Main.myPlayer == Projectile.owner)
                 {

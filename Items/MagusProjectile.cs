@@ -26,8 +26,7 @@ namespace MagusClass.Items
 
         public override void AI()
         {
-            //duration timer, used to get the oldest projectile
-            Projectile.ai[2]++;
+            Projectile.localAI[2]++;
 
             if (Projectile.owner == Main.myPlayer)
             {
@@ -39,14 +38,14 @@ namespace MagusClass.Items
                 }
                 if (!player.HasBuff(buffID))
                 {
-                    Projectile.ai[1] = 1;
+                    Projectile.ai[2] = 1;
                 }
             }
 
-            if (Projectile.ai[1] == 1)
+            if (Projectile.ai[2] == 1)
             {
                 Projectile.alpha += 5;
-                if (Projectile.alpha > 255)
+                if (Projectile.alpha >= 255)
                 {
                     Projectile.alpha = 255;
                     Projectile.Kill();
@@ -59,13 +58,10 @@ namespace MagusClass.Items
             }
 
             //Capture mouse location on the first frame
-            if (Projectile.ai[2] == 1)
+            if (Projectile.owner == Main.myPlayer && Projectile.localAI[2] == 1)
             {
-                if (Projectile.owner == Main.myPlayer)
-                {
-                    targetPosition = Main.MouseWorld;
-                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
-                }
+                targetPosition = Main.MouseWorld;
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
             }
         }
 
@@ -77,11 +73,11 @@ namespace MagusClass.Items
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[1] < 1)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[2] < 1)
                     {
-                        if (Main.projectile[i].ai[2] > Projectile.ai[2])
+                        if (Main.projectile[i].localAI[2] > Projectile.localAI[2])
                         {
-                            Main.projectile[i].ai[1] = 1;
+                            Main.projectile[i].ai[2] = 1;
                         }
                     }
                 }

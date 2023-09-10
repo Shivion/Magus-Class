@@ -28,7 +28,7 @@ namespace MagusClass.Items
 
             if (Thrown())
             {
-                if (Projectile.ai[1] == 0 && Projectile.ai[0] > spawnFrequency)
+                if (Projectile.ai[2] == 0 && Projectile.ai[0] > spawnFrequency)
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {

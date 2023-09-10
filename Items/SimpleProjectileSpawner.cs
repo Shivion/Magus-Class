@@ -32,7 +32,7 @@ namespace MagusClass.Items
             KillExistingProjectiles();
             if (!thrown || Thrown())
             {
-                if (Projectile.ai[1] == 0 && Projectile.ai[0] > spawnInterval)
+                if (Projectile.ai[2] == 0 && Projectile.ai[0] > spawnInterval)
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {

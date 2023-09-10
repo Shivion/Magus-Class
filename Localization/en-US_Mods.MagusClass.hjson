@@ -120,6 +120,11 @@ Items: {
 		DisplayName: Ice Rod
 		Tooltip: ""
 	}
+
+	ClingerStaff: {
+		DisplayName: Clinger Staff
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -151,6 +156,7 @@ Projectiles: {
 	MedusaHeadRay.DisplayName: Medusa Head Ray
 	MagnetSphereSpawner.DisplayName: Magnet Sphere Spawner
 	IceRodSpawner.DisplayName: Ice Rod Spawner
+	ClingerStaffSpawner.DisplayName: Clinger Staff Spawner
 }
 
 Buffs: {
@@ -272,5 +278,10 @@ Buffs: {
 	IceRodBuff: {
 		DisplayName: Ice Rod Buff
 		Description: Mods.MagusClass.Buffs.IceRodBuff.Description
+	}
+
+	ClingerStaffBuff: {
+		DisplayName: Clinger Staff Buff
+		Description: Mods.MagusClass.Buffs.ClingerStaffBuff.Description
 	}
 }

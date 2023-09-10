@@ -131,7 +131,7 @@ namespace MagusClass.Items
                     advancedEntity.Hook_AfterPlacement(blockPositionX, blockPositionY, ModContent.TileEntityType<IceRodTileEntity>(), 0, 0, 0);
                 }
             }
-            Projectile.ai[1] = 1;
+            Projectile.ai[2] = 1;
             Projectile.alpha = 255;
             base.Kill(Projectile.timeLeft);
         }
