@@ -27,6 +27,7 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.width = 32;
             Item.height = 18;
+            Item.color = Color.Red;
             Item.autoReuse = false;
             Item.UseSound = SoundID.ScaryScream;
             Item.shoot = ModContent.ProjectileType<MedusaHeadSpawner>();
