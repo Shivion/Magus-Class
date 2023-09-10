@@ -10,8 +10,6 @@ namespace MagusClass.Items
 {
     public class MagnetSphere : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MagnetSphere;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
@@ -24,8 +22,8 @@ namespace MagusClass.Items
             Item.damage = 48;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 28;
-            Item.height = 30;
+            Item.width = 44;
+            Item.height = 42;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<MagnetSphereSpawner>();
             Item.buffType = ModContent.BuffType<MagnetSphereBuff>();

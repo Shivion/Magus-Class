@@ -10,8 +10,6 @@ namespace MagusClass.Items
 {
     public class SpiritFlame : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.SpiritFlame;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
