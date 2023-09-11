@@ -140,6 +140,11 @@ Items: {
 		DisplayName: Last Prism
 		Tooltip: "Magus's last Prism"
 	}
+
+	GravitasStaff: {
+		DisplayName: Gravitas Staff
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -178,6 +183,7 @@ Projectiles: {
 	LastPrismHoldout.DisplayName: Last Prism Holdout
 	LastPrismLaser.DisplayName: Last Prism Laser
 	ChargedBlasterCannonHoldout.DisplayName: Charged Blaster Cannon Holdout
+	GravitasProjectile.DisplayName: Gravitas Projectile
 }
 
 Buffs: {
