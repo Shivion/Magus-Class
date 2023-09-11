@@ -13,8 +13,8 @@ namespace MagusClass.Items
         {
             Item.damage = 20;
             Item.mana = 25;
-
             Item.knockBack = 10f;
+
             Item.width = 48;
             Item.height = 48;
             Item.useTime = 20;
@@ -22,7 +22,7 @@ namespace MagusClass.Items
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.noMelee = true;
             Item.value = Item.sellPrice(0, 5, 0, 0);
-            Item.rare = ItemRarityID.Red;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<GravitasProjectile>();
@@ -39,7 +39,7 @@ namespace MagusClass.Items
         public override bool CanUseItem(Player player)
         {
             // Stops us from spawning more than 3 projectile.
-            return player.ownedProjectileCounts[Item.shoot] < 3;
+            return player.ownedProjectileCounts[Item.shoot] < 1;
         }
     }
 
@@ -48,6 +48,7 @@ namespace MagusClass.Items
     {
         private int maxRadius = 250;        // Maximum radius
         private int growthRate = 40;        // Rate of growth
+        private float growthTime = 10f;     // Time of growth
 
         private bool spawned = false;
 
@@ -61,7 +62,7 @@ namespace MagusClass.Items
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 90;
+            Projectile.localNPCHitCooldown = (int)growthTime;   // Makes sure the damage ticks on each growth. (Reality is damage can still happen outside of growth tick but good enough)
             Projectile.alpha = 255;
         }
 
@@ -80,7 +81,7 @@ namespace MagusClass.Items
             }
 
             Projectile.ai[0] += 1f;
-            if (Projectile.ai[0] >= 90f)
+            if (Projectile.ai[0] >= growthTime)
             {
                 Projectile.width += growthRate;
                 Projectile.height += growthRate;
