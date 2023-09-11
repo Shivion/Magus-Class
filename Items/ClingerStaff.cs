@@ -18,7 +18,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.ClingerStaff);
-            Item.mana = 50;
+            Item.mana = 25;
             Item.damage = 43;
             Item.useTime = 16;
             Item.useAnimation = 16;
@@ -152,7 +152,7 @@ namespace MagusClass.Items
 
     internal class ClingerStaffBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 25;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<ClingerStaffSpawner>() };
     }

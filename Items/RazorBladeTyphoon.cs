@@ -21,8 +21,8 @@ namespace MagusClass.Items
             Item.width = 31;
             Item.height = 30;
             Item.autoReuse = false;
-            Item.mana = 100;
-            Item.damage = 60;
+            Item.mana = 200;
+            Item.damage = 85;
             Item.shoot = ModContent.ProjectileType<RazorbladeTyphoonSpawner>();
             Item.buffType = ModContent.BuffType<RazorbladeTyphoonBuff>();
             Item.shootSpeed = 10;
@@ -67,7 +67,7 @@ namespace MagusClass.Items
 
     internal class RazorbladeTyphoonBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 100;
+        protected override int ManaCost => 200;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<RazorbladeTyphoonSpawner>() };
     }

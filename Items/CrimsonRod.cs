@@ -18,7 +18,7 @@ namespace MagusClass.Items
             Item.CloneDefaults(ItemID.CrimsonRod);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 30;
+            Item.mana = 25;
             Item.damage = 12;
             Item.width = 38;
             Item.height = 40;
@@ -189,7 +189,7 @@ namespace MagusClass.Items
 
     internal class CrimsonRodBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 30;
+        protected override int ManaCost => 25;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<CrimsonRodCloudSeed>(), ModContent.ProjectileType<CrimsonRodCloud>() };
     }

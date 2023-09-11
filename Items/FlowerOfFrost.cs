@@ -21,7 +21,7 @@ namespace MagusClass.Items
             Item.width = 31;
             Item.height = 31;
             Item.mana = 50;
-            Item.damage = 10;
+            Item.damage = 50;
             Item.shoot = ModContent.ProjectileType<FlowerOfFrostSpawner>();
             Item.buffType = ModContent.BuffType<FlowerOfFrostBuff>();
         }
@@ -48,6 +48,7 @@ namespace MagusClass.Items
         {
             base.SetDefaults();
             spawnedProjectileType = ProjectileID.BallofFrost;
+            spawnInterval = 50;
             projectileID = ModContent.ProjectileType<FlowerOfFrostSpawner>();
             buffID = ModContent.BuffType<FlowerOfFrostBuff>();
         }

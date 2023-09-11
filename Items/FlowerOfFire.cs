@@ -21,7 +21,7 @@ namespace MagusClass.Items
             Item.width = 33;
             Item.height = 31;
             Item.mana = 50;
-            Item.damage = 10;
+            Item.damage = 40;
             Item.shoot = ModContent.ProjectileType<FlowerOfFireSpawner>();
             Item.buffType = ModContent.BuffType<FlowerOfFireBuff>();
         }
