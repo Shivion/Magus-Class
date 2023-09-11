@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +22,7 @@ namespace MagusClass.Items
             Item.width = 28;
             Item.height = 32;
             Item.mana = 75;
-            Item.damage = 15;
+            Item.damage = 30;
             Item.shoot = ModContent.ProjectileType<GoldenShowerSpawner>();
             Item.buffType = ModContent.BuffType<GoldenShowerBuff>();
         }
@@ -57,7 +56,7 @@ namespace MagusClass.Items
             buffID = ModContent.BuffType<GoldenShowerBuff>();
             projectileID = ModContent.ProjectileType<GoldenShowerSpawner>();
             coneRadius = 5;
-            spawnInterval = 6f;
+            spawnInterval = 18f;
             sound = SoundID.Item13;
             doSpin = false;
             horizontalSprite = true;

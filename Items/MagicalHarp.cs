@@ -65,10 +65,16 @@ namespace MagusClass.Items
             buffID = ModContent.BuffType<MagicalHarpBuff>();
             projectileID = ModContent.ProjectileType<MagicalHarpSpawner>();
             coneRadius = 15;
-            spawnInterval = 6f;
+            spawnInterval = 12f;
             sound = SoundID.Item26;
             doSpin = false;
             horizontalSprite = true;
+        }
+
+        internal override bool SoundUpdateCallback(ProjectileAudioTracker tracker, ActiveSound soundInstance)
+        {
+            soundInstance.Pitch = Projectile.ai[1];
+            return tracker.IsActiveAndInGame();
         }
     }
 

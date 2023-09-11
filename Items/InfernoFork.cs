@@ -17,7 +17,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.InfernoFork);
-            Item.mana = 50;
+            Item.mana = 25;
             Item.damage = 70;
             Item.useTime = 16;
             Item.useAnimation = 16;
@@ -52,7 +52,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.friendly = true; 
+            Projectile.friendly = true;
             DrawOffsetX = -52;
             DrawOriginOffsetY = -10;
             DrawOriginOffsetX = 17;
@@ -79,7 +79,7 @@ namespace MagusClass.Items
             {
                 Projectile.rotation = Projectile.velocity.ToRotation();
                 Projectile.position += Projectile.velocity;
-                if (Projectile.ai[2] > 10f)
+                if (Projectile.localAI[2] > 10f)
                 {
                     Projectile.velocity += new Vector2(0, 0.1f);
                 }
@@ -94,7 +94,7 @@ namespace MagusClass.Items
             {
                 Projectile.velocity = Vector2.Zero;
 
-                if (Projectile.ai[1] == 0 && Projectile.ai[0] == 0)
+                if (Projectile.ai[2] == 0 && Projectile.ai[0] == 0)
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {
@@ -127,7 +127,7 @@ namespace MagusClass.Items
 
     internal class InfernoForkBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 25;
         protected override bool MultipleSpellsAllowed => true;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<InfernoForkSpawner>() };
     }

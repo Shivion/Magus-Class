@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -14,6 +13,17 @@ namespace MagusClass.Items
 
         protected Vector2 targetPosition;
 
+        private bool IsCulling
+        {
+            get => Projectile.ai[2] == 1;
+            set => Projectile.ai[2] = value ? 1 : 0;
+        }
+
+        private float TimeActive
+        {
+            get => Projectile.localAI[2];
+            set => Projectile.localAI[2] = value;
+        }
         public override void SetStaticDefaults()
         {
 
@@ -27,8 +37,7 @@ namespace MagusClass.Items
 
         public override void AI()
         {
-            //duration timer, used to get the oldest projectile
-            Projectile.ai[2]++;
+            TimeActive++;
 
             if (Projectile.owner == Main.myPlayer)
             {
@@ -40,14 +49,14 @@ namespace MagusClass.Items
                 }
                 if (!player.HasBuff(buffID))
                 {
-                    Projectile.ai[1] = 1;
+                    IsCulling = true;
                 }
             }
 
-            if (Projectile.ai[1] == 1)
+            if (IsCulling)
             {
                 Projectile.alpha += 5;
-                if (Projectile.alpha > 255)
+                if (Projectile.alpha >= 255)
                 {
                     Projectile.alpha = 255;
                     Projectile.Kill();
@@ -60,13 +69,10 @@ namespace MagusClass.Items
             }
 
             //Capture mouse location on the first frame
-            if (Projectile.ai[2] == 1)
+            if (Projectile.owner == Main.myPlayer && Projectile.localAI[2] == 1)
             {
-                if (Projectile.owner == Main.myPlayer)
-                {
-                    targetPosition = Main.MouseWorld;
-                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
-                }
+                targetPosition = Main.MouseWorld;
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
             }
         }
 
@@ -78,18 +84,18 @@ namespace MagusClass.Items
             {
                 for (int i = 0; i < Main.projectile.Length; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[1] < 1)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[2] < 1)
                     {
-                        if (Main.projectile[i].ai[2] > Projectile.ai[2])
+                        if (Main.projectile[i].localAI[2] > TimeActive)
                         {
-                            Main.projectile[i].ai[1] = 1;
+                            Main.projectile[i].ai[2] = 1;
                         }
                     }
                 }
             }
         }
 
-        public bool Thrown()
+        public bool Thrown(float speedModifier = 1, bool doRotation = true)
         {
             bool reachedX = false;
             bool reachedY = false;
@@ -101,7 +107,7 @@ namespace MagusClass.Items
             }
             else
             {
-                Projectile.position.X += Projectile.velocity.X * 2;
+                Projectile.position.X += Projectile.velocity.X * speedModifier;
             }
             if (Projectile.velocity.Y == 0f || (Projectile.velocity.Y < 0f && Projectile.Center.Y < targetPosition.Y) || (Projectile.velocity.Y > 0f && Projectile.Center.Y > targetPosition.Y))
             {
@@ -109,14 +115,14 @@ namespace MagusClass.Items
             }
             else
             {
-                Projectile.position.Y += Projectile.velocity.Y * 2;
+                Projectile.position.Y += Projectile.velocity.Y * speedModifier;
             }
 
             if (reachedX && reachedY)
             {
                 return true;
             }
-            else
+            else if (doRotation)
             {
                 Projectile.rotation = Projectile.velocity.ToRotation();
             }

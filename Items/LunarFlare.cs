@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +20,7 @@ namespace MagusClass.Items
             Item.CloneDefaults(ItemID.LunarFlareBook);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 100;
+            Item.mana = 50;
             Item.damage = 100;
             Item.useTime = 16;
             Item.width = 38;
@@ -68,7 +66,7 @@ namespace MagusClass.Items
 
     internal class LunarFlareBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 100;
+        protected override int ManaCost => 50;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<LunarFlareSpawner>() };
     }

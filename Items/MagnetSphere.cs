@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,8 +9,6 @@ namespace MagusClass.Items
 {
     public class MagnetSphere : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MagnetSphere;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
@@ -26,8 +21,8 @@ namespace MagusClass.Items
             Item.damage = 48;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 28;
-            Item.height = 30;
+            Item.width = 44;
+            Item.height = 42;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<MagnetSphereSpawner>();
             Item.buffType = ModContent.BuffType<MagnetSphereBuff>();
@@ -52,8 +47,6 @@ namespace MagusClass.Items
     internal class MagnetSphereSpawner : MagusProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.MagnetSphereBall;
-
-        private static List<Tuple<int, float>> _MagnetSphereTargetList = new List<Tuple<int, float>>();
 
         public override void SetStaticDefaults()
         {
@@ -93,7 +86,7 @@ namespace MagusClass.Items
             }
 
             //Get target
-            if(Projectile.owner == Main.myPlayer)
+            if (Projectile.owner == Main.myPlayer)
             {
                 int[] targets = new int[20];
                 int targetIndex = 0;
@@ -148,7 +141,7 @@ namespace MagusClass.Items
         {
             return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
         }
-					
+
     }
 
     internal class MagnetSphereBuff : MagusSpellBuff

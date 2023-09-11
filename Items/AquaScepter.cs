@@ -17,7 +17,7 @@ namespace MagusClass.Items
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.AquaScepter);
-            Item.mana = 50;
+            Item.mana = 25;
             Item.damage = 15;
             Item.useTime = 16;
             Item.useAnimation = 16;
@@ -64,9 +64,9 @@ namespace MagusClass.Items
             KillExistingProjectiles();
             base.AI();
 
-            if(Thrown())
+            if (Thrown())
             {
-                if (Projectile.ai[1] == 0 && Projectile.ai[0] > 5f)
+                if (Projectile.ai[2] == 0 && Projectile.ai[0] > 5f)
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {
@@ -98,7 +98,7 @@ namespace MagusClass.Items
 
     internal class AquaScepterBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 50;
+        protected override int ManaCost => 25;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<AquaScepterSpawner>() };
     }

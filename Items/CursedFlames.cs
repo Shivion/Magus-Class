@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +20,7 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.autoReuse = false;
             Item.mana = 50;
-            Item.damage = 25;
+            Item.damage = 55;
             Item.width = 37;
             Item.height = 33;
             Item.shoot = ModContent.ProjectileType<CursedFlamesSpawner>();
@@ -57,7 +56,7 @@ namespace MagusClass.Items
             buffID = ModContent.BuffType<CursedFlamesBuff>();
             projectileID = ModContent.ProjectileType<CursedFlamesSpawner>();
             coneRadius = 15;
-            spawnInterval = 30f;
+            spawnInterval = 15f;
             sound = SoundID.Item20;
             doSpin = false;
             horizontalSprite = true;
