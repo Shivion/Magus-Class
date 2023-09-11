@@ -3,142 +3,142 @@
 Items: {
 	Vilethorn: {
 		DisplayName: Vilethorn
-		Tooltip: Magus's Vilethorn
+		Tooltip: "Magus's Vilethorn"
 	}
 
 	CrimsonRod: {
 		DisplayName: Crimson Rod
-		Tooltip: ""
+		Tooltip: "Magus's Crimson Rod"
 	}
 
 	WaterBolt: {
 		DisplayName: Water Bolt
-		Tooltip: ""
+		Tooltip: "Magus's Water Bolt"
 	}
 
 	AquaScepter: {
 		DisplayName: Aqua Scepter
-		Tooltip: ""
+		Tooltip: "Magus's Aqua Scepter"
 	}
 
 	FlowerOfFire: {
-		DisplayName: Flower Of Fire
-		Tooltip: ""
+		DisplayName: Flower of Fire
+		Tooltip: "Magus's Flower of Fire"
 	}
 
 	CrystalVileShard: {
 		DisplayName: Crystal Vile Shard
-		Tooltip: ""
+		Tooltip: "Magus's Crystal Vile Shard"
 	}
 
 	NettleBurst: {
 		DisplayName: Nettle Burst
-		Tooltip: ""
+		Tooltip: "Magus's Nettle Burst"
 	}
 
 	BubbleGun: {
 		DisplayName: Bubble Gun
-		Tooltip: ""
+		Tooltip: "Magus's Bubble Gun"
 	}
 
 	CursedFlames: {
 		DisplayName: Cursed Flames
-		Tooltip: ""
+		Tooltip: "Magus's Cursed Flames"
 	}
 
 	FlowerOfFrost: {
-		DisplayName: Flower Of Frost
-		Tooltip: ""
+		DisplayName: Flower of Frost
+		Tooltip: "Magus's Flower of Frost"
 	}
 
 	GoldenShower: {
 		DisplayName: Golden Shower
-		Tooltip: ""
+		Tooltip: "Magus's Golden Shower"
 	}
 
 	MagicalHarp: {
 		DisplayName: Magical Harp
-		Tooltip: ""
+		Tooltip: "Magus's Magical Harp"
 	}
 
 	RazorbladeTyphoon: {
 		DisplayName: Razorblade Typhoon
-		Tooltip: ""
+		Tooltip: "Magus's Razorblade Typhoon"
 	}
 
 	StaffOfEarth: {
-		DisplayName: Staff Of Earth
-		Tooltip: ""
+		DisplayName: Staff of Earth
+		Tooltip: "Magus's Staff of Earth"
 	}
 
 	MeteorStaff: {
 		DisplayName: Meteor Staff
-		Tooltip: ""
+		Tooltip: "Magus's Meteor Staff"
 	}
 
 	BlizzardStaff: {
 		DisplayName: Blizzard Staff
-		Tooltip: ""
+		Tooltip: "Magus's Blizzard Staff"
 	}
 
 	LunarFlare: {
 		DisplayName: Lunar Flare
-		Tooltip: ""
+		Tooltip: "Magus's Lunar Flare"
 	}
 
 	NimbusRod: {
 		DisplayName: Nimbus Rod
-		Tooltip: ""
+		Tooltip: "Magus's Nimbus Rod"
 	}
 
 	InfernoFork: {
 		DisplayName: Inferno Fork
-		Tooltip: ""
+		Tooltip: "Magus's Inferno Fork"
 	}
 
 	RainbowGun: {
 		DisplayName: Rainbow Gun
-		Tooltip: ""
+		Tooltip: "Magus's Rainbow Gun"
 	}
 
 	SpiritFlame: {
 		DisplayName: Spirit Flame
-		Tooltip: ""
+		Tooltip: "Magus's Spirit Flame"
 	}
 
 	MedusaHead: {
 		DisplayName: Medusa Head
-		Tooltip: ""
+		Tooltip: "Magus's Medusa Head"
 	}
 
 	MagnetSphere: {
 		DisplayName: Magnet Sphere
-		Tooltip: ""
+		Tooltip: "Magus's Magnet Sphere"
 	}
 
 	IceRod: {
 		DisplayName: Ice Rod
-		Tooltip: ""
+		Tooltip: "Magus's Ice Rod"
 	}
 
 	ClingerStaff: {
 		DisplayName: Clinger Staff
-		Tooltip: ""
+		Tooltip: "Magus's Clinger Staff"
 	}
 
 	BloodThorn: {
 		DisplayName: Blood Thorn
-		Tooltip: ""
+		Tooltip: "Magus's Blood Thorn"
 	}
 
 	ChargedBlasterCannon: {
 		DisplayName: Charged Blaster Cannon
-		Tooltip: ""
+		Tooltip: "Magus's Charged Blaster Cannon"
 	}
 
 	LastPrism: {
 		DisplayName: Last Prism
-		Tooltip: ""
+		Tooltip: "Magus's last Prism"
 	}
 }
 
@@ -148,16 +148,16 @@ Projectiles: {
 	CrimsonRodCloudSeed.DisplayName: Crimson Rod Cloud Seed
 	WaterBoltSpawner.DisplayName: Water Bolt Spawner
 	AquaScepterSpawner.DisplayName: Aqua Scepter Spawner
-	FlowerOfFireSpawner.DisplayName: Flower Of Fire Spawner
+	FlowerOfFireSpawner.DisplayName: Flower of Fire Spawner
 	CrystalVileShardSpawner.DisplayName: Crystal Vile Shard Spawner
 	NettleBurstSpawner.DisplayName: Nettle Burst Spawner
 	BubbleGunSpawner.DisplayName: Bubble Gun Spawner
 	CursedFlamesSpawner.DisplayName: Cursed Flames Spawner
-	FlowerOfFrostSpawner.DisplayName: Flower Of Frost Spawner
+	FlowerOfFrostSpawner.DisplayName: Flower of Frost Spawner
 	GoldenShowerSpawner.DisplayName: Golden Shower Spawner
 	MagicalHarpSpawner.DisplayName: Magical Harp Spawner
 	RazorbladeTyphoonSpawner.DisplayName: Razorblade Typhoon Spawner
-	StaffOfEarthSpawner.DisplayName: Staff Of Earth Spawner
+	StaffOfEarthSpawner.DisplayName: Staff of Earth Spawner
 	MeteorStaffSpawner.DisplayName: Meteor Staff Spawner
 	BlizzardStaffSpawner.DisplayName: Blizzard Staff Spawner
 	LunarFlareSpawner.DisplayName: Lunar Flare Spawner
@@ -188,136 +188,136 @@ Buffs: {
 
 	CrimsonRodBuff: {
 		DisplayName: Crimson Rod Buff
-		Description: Mods.MagusClass.Buffs.CrimsonRodBuff.Description
+		Description: Crimson Rod is active
 	}
 
 	WaterBoltBuff: {
 		DisplayName: Water Bolt Buff
-		Description: Mods.MagusClass.Buffs.WaterBoltBuff.Description
+		Description: Water Bolt is active
 	}
 
 	AquaScepterBuff: {
 		DisplayName: Aqua Scepter Buff
-		Description: Mods.MagusClass.Buffs.AquaScepterBuff.Description
+		Description: Aqua Scepter is active
 	}
 
 	FlowerOfFireBuff: {
 		DisplayName: Flower Of Fire Buff
-		Description: Mods.MagusClass.Buffs.FlowerOfFireBuff.Description
+		Description: Flower of Fire is active
 	}
 
 	CrystalVileShardBuff: {
 		DisplayName: Crystal Vile Shard Buff
-		Description: Mods.MagusClass.Buffs.CrystalVileShardBuff.Description
+		Description: Crystal Vile Shard is active
 	}
 
 	NettleBurstBuff: {
 		DisplayName: Nettle Burst Buff
-		Description: Mods.MagusClass.Buffs.NettleBurstBuff.Description
+		Description: Nettle Burst is active
 	}
 
 	BubbleGunBuff: {
 		DisplayName: Bubble Gun Buff
-		Description: Mods.MagusClass.Buffs.BubbleGunBuff.Description
+		Description: Bubble Gun is active
 	}
 
 	CursedFlamesBuff: {
 		DisplayName: Cursed Flames Buff
-		Description: Mods.MagusClass.Buffs.CursedFlamesBuff.Description
+		Description: Cursed Flames is active
 	}
 
 	FlowerOfFrostBuff: {
 		DisplayName: Flower Of Frost Buff
-		Description: Mods.MagusClass.Buffs.FlowerOfFrostBuff.Description
+		Description: Flower of Frost is active
 	}
 
 	GoldenShowerBuff: {
 		DisplayName: Golden Shower Buff
-		Description: Mods.MagusClass.Buffs.GoldenShowerBuff.Description
+		Description: Golden Shower is active
 	}
 
 	MagicalHarpBuff: {
 		DisplayName: Magical Harp Buff
-		Description: Mods.MagusClass.Buffs.MagicalHarpBuff.Description
+		Description: Magical Harp is active
 	}
 
 	RazorbladeTyphoonBuff: {
 		DisplayName: Razorblade Typhoon Buff
-		Description: Mods.MagusClass.Buffs.RazorbladeTyphoonBuff.Description
+		Description: Razorblade Typhoon is active
 	}
 
 	StaffOfEarthBuff: {
 		DisplayName: Staff Of Earth Buff
-		Description: Mods.MagusClass.Buffs.StaffOfEarthBuff.Description
+		Description: Staff of Earth is active
 	}
 
 	MeteorStaffBuff: {
 		DisplayName: Meteor Staff Buff
-		Description: Mods.MagusClass.Buffs.MeteorStaffBuff.Description
+		Description: Meteor Staff is active
 	}
 
 	BlizzardStaffBuff: {
 		DisplayName: Blizzard Staff Buff
-		Description: Mods.MagusClass.Buffs.BlizzardStaffBuff.Description
+		Description: Blizzard Staff is active
 	}
 
 	LunarFlareBuff: {
 		DisplayName: Lunar Flare Buff
-		Description: Mods.MagusClass.Buffs.LunarFlareBuff.Description
+		Description: Lunar Flare is active
 	}
 
 	NimbusRodBuff: {
 		DisplayName: Nimbus Rod Buff
-		Description: Mods.MagusClass.Buffs.NimbusRodBuff.Description
+		Description: Nimbus Rod is active
 	}
 
 	InfernoForkBuff: {
 		DisplayName: Inferno Fork Buff
-		Description: Mods.MagusClass.Buffs.InfernoForkBuff.Description
+		Description: Inferno Fork is active
 	}
 
 	RainbowGunBuff: {
 		DisplayName: Rainbow Gun Buff
-		Description: Mods.MagusClass.Buffs.RainbowGunBuff.Description
+		Description: Rainbow Gun is active
 	}
 
 	SpiritFlameBuff: {
 		DisplayName: Spirit Flame Buff
-		Description: Mods.MagusClass.Buffs.SpiritFlameBuff.Description
+		Description: Spirit Flame is active
 	}
 
 	MedusaHeadBuff: {
 		DisplayName: Medusa Head Buff
-		Description: Mods.MagusClass.Buffs.MedusaHeadBuff.Description
+		Description: Medusa Head is active
 	}
 
 	MagnetSphereBuff: {
 		DisplayName: Magnet Sphere Buff
-		Description: Mods.MagusClass.Buffs.MagnetSphereBuff.Description
+		Description: Magnet Sphere is active
 	}
 
 	IceRodBuff: {
 		DisplayName: Ice Rod Buff
-		Description: Mods.MagusClass.Buffs.IceRodBuff.Description
+		Description: Ice Rod is active
 	}
 
 	ClingerStaffBuff: {
 		DisplayName: Clinger Staff Buff
-		Description: Mods.MagusClass.Buffs.ClingerStaffBuff.Description
+		Description: Clinger Staff is active
 	}
 
 	BloodThornBuff: {
 		DisplayName: Blood Thorn Buff
-		Description: Mods.MagusClass.Buffs.BloodThornBuff.Description
+		Description: Blood Thorn is active
 	}
 
 	ChargedBlasterCannonBuff: {
 		DisplayName: Charged Blaster Cannon Buff
-		Description: Mods.MagusClass.Buffs.ChargedBlasterCannonBuff.Description
+		Description: Charged Blaster Cannon is active
 	}
 
 	LastPrismBuff: {
 		DisplayName: Last Prism Buff
-		Description: Mods.MagusClass.Buffs.LastPrismBuff.Description
+		Description: Last Prism is active
 	}
 }
