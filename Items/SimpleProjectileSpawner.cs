@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using MonoMod.RuntimeDetour;
+using System.Diagnostics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -28,6 +30,10 @@ namespace MagusClass.Items
 
         public override void AI()
         {
+            const float MaxPitch = 1;
+            const float MinPitch = -MaxPitch;
+            const float PitchInterval = 0.1f;
+
             base.AI();
             KillExistingProjectiles();
             if (!thrown || Thrown())
@@ -44,7 +50,14 @@ namespace MagusClass.Items
                         int spawnedProjectile = Projectile.NewProjectile(Projectile.GetSource_ReleaseEntity(), X, Y, perturbedSpeed.X, perturbedSpeed.Y, spawnedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, spawnedProjectile);
                     }
-                    SoundEngine.PlaySound(sound, Projectile.position);
+                    var tracker = new ProjectileAudioTracker(Projectile);
+                    Projectile.ai[1] += PitchInterval;
+                    if (Projectile.ai[1] > MaxPitch)
+                    {
+                        Projectile.ai[1] = MinPitch;
+                    }
+                    SoundEngine.PlaySound(sound, Projectile.position, soundInstance => SoundUpdateCallback(tracker, soundInstance));
+
                     Projectile.ai[0] = 0;
                 }
                 Projectile.ai[0]++;
@@ -67,6 +80,11 @@ namespace MagusClass.Items
                     }
                 }
             }
+        }
+
+        internal virtual bool SoundUpdateCallback(ProjectileAudioTracker tracker, ActiveSound soundInstance)
+        {
+            return tracker.IsActiveAndInGame();
         }
 
         public override bool ShouldUpdatePosition()

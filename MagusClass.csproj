@@ -9,8 +9,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Items\BlizzardStaffBuff.png" />
+    <None Remove="Items\BloodThornBuff.png" />
+    <None Remove="Items\ChargedBlasterCannonBuff.png" />
     <None Remove="Items\ClingerStaffBuff.png" />
     <None Remove="Items\IceRodBuff.png" />
+    <None Remove="Items\LastPrismBuff.png" />
     <None Remove="Items\LunarFlareBuff.png" />
     <None Remove="Items\MagnetSphereBuff.png" />
     <None Remove="Items\MedusaHeadBuff.png" />

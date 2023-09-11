@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -48,8 +47,6 @@ namespace MagusClass.Items
     internal class MagnetSphereSpawner : MagusProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.MagnetSphereBall;
-
-        private static List<Tuple<int, float>> _MagnetSphereTargetList = new List<Tuple<int, float>>();
 
         public override void SetStaticDefaults()
         {

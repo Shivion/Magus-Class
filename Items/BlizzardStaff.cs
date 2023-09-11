@@ -18,7 +18,7 @@ namespace MagusClass.Items
             Item.CloneDefaults(ItemID.BlizzardStaff);
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.mana = 75;
+            Item.mana = 50;
             Item.damage = 58;
             Item.useTime = 16;
             Item.width = 62;
@@ -63,7 +63,7 @@ namespace MagusClass.Items
     }
     internal class BlizzardStaffBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 75;
+        protected override int ManaCost => 50;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<BlizzardStaffSpawner>() };
     }

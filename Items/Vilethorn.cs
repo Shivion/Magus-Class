@@ -20,7 +20,7 @@ namespace MagusClass.Items
             Item.useAnimation = 16;
             Item.width = 32;
             Item.height = 32;
-            Item.mana = 30;
+            Item.mana = 25;
             Item.damage = 5;
             Item.shoot = ModContent.ProjectileType<VilethornSpawner>();
             Item.buffType = ModContent.BuffType<VilethornBuff>();
@@ -48,7 +48,7 @@ namespace MagusClass.Items
 
     internal class VilethornBuff : MagusSpellBuff
     {
-        protected override int ManaCost => 30;
+        protected override int ManaCost => 25;
         protected override bool MultipleSpellsAllowed => false;
         protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<VilethornSpawner>() };
     }

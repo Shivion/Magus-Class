@@ -13,6 +13,17 @@ namespace MagusClass.Items
 
         protected Vector2 targetPosition;
 
+        private bool IsCulling
+        {
+            get => Projectile.ai[2] == 1;
+            set => Projectile.ai[2] = value ? 1 : 0;
+        }
+
+        private float TimeActive
+        {
+            get => Projectile.localAI[2];
+            set => Projectile.localAI[2] = value;
+        }
         public override void SetStaticDefaults()
         {
 
@@ -26,7 +37,7 @@ namespace MagusClass.Items
 
         public override void AI()
         {
-            Projectile.localAI[2]++;
+            TimeActive++;
 
             if (Projectile.owner == Main.myPlayer)
             {
@@ -38,11 +49,11 @@ namespace MagusClass.Items
                 }
                 if (!player.HasBuff(buffID))
                 {
-                    Projectile.ai[2] = 1;
+                    IsCulling = true;
                 }
             }
 
-            if (Projectile.ai[2] == 1)
+            if (IsCulling)
             {
                 Projectile.alpha += 5;
                 if (Projectile.alpha >= 255)
@@ -75,7 +86,7 @@ namespace MagusClass.Items
                 {
                     if (Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == Projectile.type && Main.projectile[i].ai[2] < 1)
                     {
-                        if (Main.projectile[i].localAI[2] > Projectile.localAI[2])
+                        if (Main.projectile[i].localAI[2] > TimeActive)
                         {
                             Main.projectile[i].ai[2] = 1;
                         }
