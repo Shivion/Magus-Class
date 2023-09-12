@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagusClass.Items.Vilethorn;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +27,7 @@ namespace MagusClass.Items
             Projectile.velocity = Vector2.Zero;
             spawnedProjectile = -1;
             spawnedProjectileType = ProjectileID.VilethornBase;
-            buffID = ModContent.BuffType<VilethornBuff>();
+            buffID = ModContent.BuffType<Vilethorn.Vilethorn.VilethornBuff>();
             projectileID = ModContent.ProjectileType<VilethornSpawner>();
         }
 

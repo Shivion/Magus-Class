@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagusClass.Items.FlowerOfFire;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -21,7 +22,7 @@ namespace MagusClass.Items
             Projectile.width = 24;
             spawnedProjectileType = ProjectileID.BallofFire;
             projectileID = ModContent.ProjectileType<FlowerOfFireSpawner>();
-            buffID = ModContent.BuffType<FlowerOfFireBuff>();
+            buffID = ModContent.BuffType<FlowerOfFire.FlowerOfFire.FlowerOfFireBuff>();
         }
 
         public override void OnSpawn(IEntitySource source)
