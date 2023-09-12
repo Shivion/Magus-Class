@@ -41,7 +41,7 @@ namespace MagusClass.Items.FlowerOfFire
             return true;
         }
 
-        class FlowerOfFireBuff : MagusSpellBuff
+        internal class FlowerOfFireBuff : MagusSpellBuff
         {
             protected override int ManaCost => 50;
             protected override bool MultipleSpellsAllowed => false;

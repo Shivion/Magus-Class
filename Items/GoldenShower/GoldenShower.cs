@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MagusClass.Items
+namespace MagusClass.Items.GoldenShower
 {
     public class GoldenShower : ModItem
     {
