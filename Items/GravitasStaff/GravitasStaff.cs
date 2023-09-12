@@ -29,7 +29,9 @@ namespace MagusClass.Items.GravitasStaff
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.Wood, 1)
+                .AddIngredient(ItemID.SoulofFright, 1)
+                .AddIngredient(ItemID.SoulofSight, 1)
+                .AddIngredient(ItemID.SoulofMight, 1)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
