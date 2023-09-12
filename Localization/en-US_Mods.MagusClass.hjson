@@ -3,147 +3,147 @@
 Items: {
 	Vilethorn: {
 		DisplayName: Vilethorn
-		Tooltip: "Magus's Vilethorn"
+		Tooltip: Magus's Vilethorn
 	}
 
 	CrimsonRod: {
 		DisplayName: Crimson Rod
-		Tooltip: "Magus's Crimson Rod"
+		Tooltip: Magus's Crimson Rod
 	}
 
 	WaterBolt: {
 		DisplayName: Water Bolt
-		Tooltip: "Magus's Water Bolt"
+		Tooltip: Magus's Water Bolt
 	}
 
 	AquaScepter: {
 		DisplayName: Aqua Scepter
-		Tooltip: "Magus's Aqua Scepter"
+		Tooltip: Magus's Aqua Scepter
 	}
 
 	FlowerOfFire: {
 		DisplayName: Flower of Fire
-		Tooltip: "Magus's Flower of Fire"
+		Tooltip: Magus's Flower of Fire
 	}
 
 	CrystalVileShard: {
 		DisplayName: Crystal Vile Shard
-		Tooltip: "Magus's Crystal Vile Shard"
+		Tooltip: Magus's Crystal Vile Shard
 	}
 
 	NettleBurst: {
 		DisplayName: Nettle Burst
-		Tooltip: "Magus's Nettle Burst"
+		Tooltip: Magus's Nettle Burst
 	}
 
 	BubbleGun: {
 		DisplayName: Bubble Gun
-		Tooltip: "Magus's Bubble Gun"
+		Tooltip: Magus's Bubble Gun
 	}
 
 	CursedFlames: {
 		DisplayName: Cursed Flames
-		Tooltip: "Magus's Cursed Flames"
+		Tooltip: Magus's Cursed Flames
 	}
 
 	FlowerOfFrost: {
 		DisplayName: Flower of Frost
-		Tooltip: "Magus's Flower of Frost"
+		Tooltip: Magus's Flower of Frost
 	}
 
 	GoldenShower: {
 		DisplayName: Golden Shower
-		Tooltip: "Magus's Golden Shower"
+		Tooltip: Magus's Golden Shower
 	}
 
 	MagicalHarp: {
 		DisplayName: Magical Harp
-		Tooltip: "Magus's Magical Harp"
+		Tooltip: Magus's Magical Harp
 	}
 
 	RazorbladeTyphoon: {
 		DisplayName: Razorblade Typhoon
-		Tooltip: "Magus's Razorblade Typhoon"
+		Tooltip: Magus's Razorblade Typhoon
 	}
 
 	StaffOfEarth: {
 		DisplayName: Staff of Earth
-		Tooltip: "Magus's Staff of Earth"
+		Tooltip: Magus's Staff of Earth
 	}
 
 	MeteorStaff: {
 		DisplayName: Meteor Staff
-		Tooltip: "Magus's Meteor Staff"
+		Tooltip: Magus's Meteor Staff
 	}
 
 	BlizzardStaff: {
 		DisplayName: Blizzard Staff
-		Tooltip: "Magus's Blizzard Staff"
+		Tooltip: Magus's Blizzard Staff
 	}
 
 	LunarFlare: {
 		DisplayName: Lunar Flare
-		Tooltip: "Magus's Lunar Flare"
+		Tooltip: Magus's Lunar Flare
 	}
 
 	NimbusRod: {
 		DisplayName: Nimbus Rod
-		Tooltip: "Magus's Nimbus Rod"
+		Tooltip: Magus's Nimbus Rod
 	}
 
 	InfernoFork: {
 		DisplayName: Inferno Fork
-		Tooltip: "Magus's Inferno Fork"
+		Tooltip: Magus's Inferno Fork
 	}
 
 	RainbowGun: {
 		DisplayName: Rainbow Gun
-		Tooltip: "Magus's Rainbow Gun"
+		Tooltip: Magus's Rainbow Gun
 	}
 
 	SpiritFlame: {
 		DisplayName: Spirit Flame
-		Tooltip: "Magus's Spirit Flame"
+		Tooltip: Magus's Spirit Flame
 	}
 
 	MedusaHead: {
 		DisplayName: Medusa Head
-		Tooltip: "Magus's Medusa Head"
+		Tooltip: Magus's Medusa Head
 	}
 
 	MagnetSphere: {
 		DisplayName: Magnet Sphere
-		Tooltip: "Magus's Magnet Sphere"
+		Tooltip: Magus's Magnet Sphere
 	}
 
 	IceRod: {
 		DisplayName: Ice Rod
-		Tooltip: "Magus's Ice Rod"
+		Tooltip: Magus's Ice Rod
 	}
 
 	ClingerStaff: {
 		DisplayName: Clinger Staff
-		Tooltip: "Magus's Clinger Staff"
+		Tooltip: Magus's Clinger Staff
 	}
 
 	BloodThorn: {
 		DisplayName: Blood Thorn
-		Tooltip: "Magus's Blood Thorn"
+		Tooltip: Magus's Blood Thorn
 	}
 
 	ChargedBlasterCannon: {
 		DisplayName: Charged Blaster Cannon
-		Tooltip: "Magus's Charged Blaster Cannon"
+		Tooltip: Magus's Charged Blaster Cannon
 	}
 
 	LastPrism: {
 		DisplayName: Last Prism
-		Tooltip: "Magus's last Prism"
+		Tooltip: Magus's Last Prism
 	}
 
 	GravitasStaff: {
 		DisplayName: Gravitas Staff
-		Tooltip: ""
+		Tooltip: "Thanks Shadow"
 	}
 }
 
