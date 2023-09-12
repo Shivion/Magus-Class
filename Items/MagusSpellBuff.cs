@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using MagusClass.Items.IceRod;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace MagusClass.Items

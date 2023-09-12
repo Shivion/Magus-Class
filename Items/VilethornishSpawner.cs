@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagusClass.Items.Vilethorn;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
