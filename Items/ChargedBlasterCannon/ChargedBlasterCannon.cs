@@ -22,8 +22,8 @@ namespace MagusClass.Items.ChargedBlasterCannon
             Item.damage = 100;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            //Item.width = 16;
-            //Item.height = 16;
+            Item.width = 32;
+            Item.height = 32;
             Item.autoReuse = false;
             Item.channel = false;
             //Item.shoot = ModContent.ProjectileType<ChargedBlasterCannonSpawner>();

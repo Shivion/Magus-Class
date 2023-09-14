@@ -22,8 +22,8 @@ namespace MagusClass.Items.IceRod
             Item.damage = 28;
             Item.useTime = 9;
             Item.useAnimation = 9;
-            Item.width = 30;
-            Item.height = 30;
+            Item.width = 40;
+            Item.height = 40;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<IceRodSpawner>();
             Item.buffType = ModContent.BuffType<IceRodBuff>();

@@ -8,8 +8,6 @@ namespace MagusClass.Items.BloodThorn
 {
     public class BloodThorn : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.SharpTears;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
@@ -22,8 +20,8 @@ namespace MagusClass.Items.BloodThorn
             Item.damage = 34;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 30;
+            Item.height = 40;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<BloodThornSpawner>();
             Item.buffType = ModContent.BuffType<BloodThornBuff>();

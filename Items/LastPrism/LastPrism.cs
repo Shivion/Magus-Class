@@ -11,9 +11,6 @@ namespace MagusClass.Items.LastPrism
     /// </summary>
     public class LastPrism : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.LastPrism;
-        public static Color OverrideColor = new(122, 173, 255);
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
@@ -26,8 +23,8 @@ namespace MagusClass.Items.LastPrism
             Item.damage = 100;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            //Item.width = 16;
-            //Item.height = 16;
+            Item.width = 32;
+            Item.height = 32;
             Item.autoReuse = false;
             Item.channel = false;
             //Item.shoot = ModContent.ProjectileType<LastPrismCannonSpawner>();
