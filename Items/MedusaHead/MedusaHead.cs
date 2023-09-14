@@ -22,8 +22,8 @@ namespace MagusClass.Items.MedusaHead
             Item.damage = 40;
             Item.useTime = 16;
             Item.useAnimation = 16;
-            Item.width = 32;
-            Item.height = 18;
+            Item.width = 38;
+            Item.height = 34;
             Item.autoReuse = false;
             Item.UseSound = SoundID.ScaryScream;
             Item.shoot = ModContent.ProjectileType<MedusaHeadSpawner>();
