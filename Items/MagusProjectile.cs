@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -95,7 +96,7 @@ namespace MagusClass.Items
             }
         }
 
-        public bool Thrown(float speedModifier = 1, bool doRotation = true)
+        public bool Thrown(float speedModifier = 1, bool doRotation = true, bool horizontalSprite = true)
         {
             bool reachedX = false;
             bool reachedY = false;
@@ -124,7 +125,18 @@ namespace MagusClass.Items
             }
             else if (doRotation)
             {
-                Projectile.rotation = Projectile.velocity.ToRotation();
+                //Projectile.rotation = Projectile.velocity.ToRotation() + Projectile.direction == 1 ? -MathHelper.ToRadians(rotationOffset) : MathHelper.ToRadians(rotationOffset);
+                //Projectile.spriteDirection = Projectile.direction;
+                if (horizontalSprite)
+                {
+                    Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : MathHelper.Pi);
+                    Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
+                }
+                else
+                {
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f) + Projectile.direction == 1 ? MathHelper.ToRadians(45f) : 0;
+                    Projectile.spriteDirection = Projectile.direction;
+                }
             }
             return false;
         }

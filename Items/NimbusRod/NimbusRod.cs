@@ -8,8 +8,6 @@ namespace MagusClass.Items.NimbusRod
 {
     public class NimbusRod : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.NimbusRod;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

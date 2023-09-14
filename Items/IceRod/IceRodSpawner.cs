@@ -26,7 +26,7 @@ namespace MagusClass.Items.IceRod
         {
             base.AI();
 
-            if (Thrown(1f, false))
+            if (Thrown(1f, false, false))
             {
                 Projectile.Kill();
             }

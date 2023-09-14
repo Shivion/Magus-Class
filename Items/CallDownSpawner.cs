@@ -26,7 +26,7 @@ namespace MagusClass.Items
             base.AI();
             KillExistingProjectiles();
 
-            if (Thrown())
+            if (Thrown(1, true, false))
             {
                 if (Projectile.ai[2] == 0 && Projectile.ai[0] > spawnFrequency)
                 {

@@ -30,7 +30,7 @@ namespace MagusClass.Items.BloodThorn
         base.AI();
 
 
-        if (Thrown(1, false))
+        if (Thrown(1, false, false))
         {
             if (Projectile.ai[2] == 0 && Projectile.ai[0] > 15f)
             {
