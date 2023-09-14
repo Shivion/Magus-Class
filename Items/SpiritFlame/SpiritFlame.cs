@@ -22,6 +22,7 @@ namespace MagusClass.Items.SpiritFlame
             Item.useAnimation = 16;
             Item.width = 32;
             Item.height = 18;
+            Item.glowMask = -1;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<SpiritFlameSpawner>();
             Item.buffType = ModContent.BuffType<SpiritFlameBuff>();

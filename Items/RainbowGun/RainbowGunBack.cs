@@ -51,7 +51,7 @@ namespace MagusClass.Items.RainbowGun
                 Projectile.localAI[0] = 1f;
             }
 
-            if (Projectile.ai[1] != 1 && Projectile.alpha > 0)
+            if (Projectile.ai[2] != 1 && Projectile.alpha > 0)
             {
                 Projectile.alpha -= 10;
             }

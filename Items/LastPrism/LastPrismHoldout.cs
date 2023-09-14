@@ -155,7 +155,7 @@ namespace MagusClass.Items.LastPrism
 
             // The Prism is always at full brightness, regardless of the surrounding light. This is equivalent to it being its own glowmask.
             // It is drawn in a non-white color to distinguish it from the vanilla Last Prism.
-            Color drawColor = LastPrism.OverrideColor;
+            Color drawColor = Color.White;
             Main.EntitySpriteDraw(texture, sheetInsertPosition, new Rectangle?(new Rectangle(0, spriteSheetOffset, texture.Width, frameHeight)), drawColor, Projectile.rotation, new Vector2(texture.Width / 2f, frameHeight / 2f), Projectile.scale, effects, 0f);
             return false;
         }

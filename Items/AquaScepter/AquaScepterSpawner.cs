@@ -13,8 +13,8 @@ namespace MagusClass.Items.AquaScepter
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.width = 18;
-            Projectile.height = 48;
+            Projectile.width = 48;
+            Projectile.height = 18;
             buffID = ModContent.BuffType<AquaScepter.AquaScepterBuff>();
             projectileID = ModContent.ProjectileType<AquaScepterSpawner>();
         }

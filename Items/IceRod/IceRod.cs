@@ -8,8 +8,6 @@ namespace MagusClass.Items.IceRod
 {
     public class IceRod : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.IceRod;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;

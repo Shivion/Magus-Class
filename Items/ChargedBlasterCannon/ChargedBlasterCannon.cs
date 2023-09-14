@@ -8,8 +8,6 @@ namespace MagusClass.Items.ChargedBlasterCannon
 {
     public class ChargedBlasterCannon : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.ChargedBlasterCannon;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;

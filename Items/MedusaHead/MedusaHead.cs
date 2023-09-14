@@ -8,8 +8,6 @@ namespace MagusClass.Items.MedusaHead
 {
     public class MedusaHead : ModItem
     {
-        public override string Texture => "Terraria/Images/Item_" + ItemID.MedusaHead;
-
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = false;
