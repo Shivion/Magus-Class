@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -26,15 +27,24 @@ namespace MagusClass.Items.IceRod
         {
             base.AI();
 
-            if (Projectile.ai[0] == 0 && Thrown(2f, false, false))
-            {
-                PlaceBlock();
-            }
-
-            //Collision Check
             int TileX = (int)Projectile.Center.X / 16;
             int TileY = (int)Projectile.Center.Y / 16;
             Tile tile = Main.tile[TileX, TileY];
+
+            if (Projectile.ai[0] == 0)
+            {
+                if (Thrown(2f, false, false))
+                {
+                    PlaceBlock();
+                }
+            }
+            else if(tile == null || tile.TileType != ModContent.TileType<IceRodTile>())
+            {
+                Kill(0);
+            }
+
+
+            //Collision Check
             if (Projectile.lavaWet
                 || tile != null
                 && tile.HasUnactuatedTile
