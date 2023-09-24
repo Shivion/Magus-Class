@@ -44,21 +44,36 @@ namespace MagusClass.Items.IceRod
             }
 
 
-            //Collision Check
-            if (Projectile.lavaWet
-                || tile != null
-                && tile.HasUnactuatedTile
-                && tile.TileType != ModContent.TileType<IceRodTile>()
-                && Main.tileSolid[tile.TileType]
-                && !Main.tileSolidTop[tile.TileType])
+            //lava Check
+            if (Projectile.lavaWet)
+            {
+                Kill(0);
+            }
+
+            //Tile collide;
+            if (tile != null && tile.HasUnactuatedTile && tile.TileType != ModContent.TileType<IceRodTile>() && Main.tileSolid[tile.TileType] && !Main.tileSolidTop[tile.TileType])
             {
                 Kill(0);
             }
 
             //Visuals
-            int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
-            Main.dust[dust].noGravity = true;
-            Main.dust[dust].velocity *= 0.3f;
+            if (Projectile.ai[0] == 0)
+            {
+                int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
+                Main.dust[dust].velocity *= 0.3f;
+                Main.dust[dust].noGravity = true;
+            }
+            else if (Projectile.localAI[0] < 0)
+            {
+                int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
+                Main.dust[dust].velocity *= 0.3f;
+                Main.dust[dust].noGravity = false;
+                Projectile.localAI[0] = 30;
+            }
+            else
+            {
+                Projectile.localAI[0]--;
+            }
 
             if (Projectile.velocity.X > 0f)
             {
@@ -98,9 +113,11 @@ namespace MagusClass.Items.IceRod
             if (Projectile.owner == Main.myPlayer && !Main.tile[blockPositionX, blockPositionY].HasTile && Vector2.Distance(Projectile.position, targetPosition) < 32f)
             {
                 WorldGen.PlaceTile(blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
-                Projectile.position = new Vector2(blockPositionX, blockPositionY) * 16;
+                Projectile.position = new Vector2(blockPositionX, blockPositionY) * 16 + new Vector2(4,4);
                 Projectile.ai[0] = 1;
                 Projectile.alpha = 255;
+                Projectile.width = 0;
+                Projectile.height = 0;
             }
             else
             {
@@ -112,6 +129,5 @@ namespace MagusClass.Items.IceRod
         {
             return false;
         }
-
     }
 }
