@@ -32,7 +32,6 @@ namespace MagusClass.Items.RazorbladeTyphoon
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.RazorbladeTyphoon);
-            recipe.AddIngredient(ItemID.FragmentNebula);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

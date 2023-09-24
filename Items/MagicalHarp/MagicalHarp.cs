@@ -38,8 +38,7 @@ namespace MagusClass.Items.MagicalHarp
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.MagicalHarp);
-            recipe.AddIngredient(ItemID.FragmentNebula);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
 
