@@ -36,7 +36,7 @@ namespace MagusClass.Items.IceRod
 
         public override bool KillSound(int i, int j, bool fail)
         {
-            SoundEngine.PlaySound(SoundID.Tink, new Vector2(i, j));
+            SoundEngine.PlaySound(SoundID.Shatter, new Vector2(i, j) * 16);
             return false;
         }
     }

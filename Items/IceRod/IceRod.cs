@@ -18,8 +18,8 @@ namespace MagusClass.Items.IceRod
             Item.CloneDefaults(ItemID.IceRod);
             Item.mana = 5;
             Item.damage = 28;
-            Item.useTime = 4;
-            Item.useAnimation = 4;
+            Item.useTime = 8;
+            Item.useAnimation = 8;
             Item.width = 40;
             Item.height = 40;
             Item.autoReuse = true;
