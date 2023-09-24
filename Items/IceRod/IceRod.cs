@@ -18,8 +18,8 @@ namespace MagusClass.Items.IceRod
             Item.CloneDefaults(ItemID.IceRod);
             Item.mana = 5;
             Item.damage = 28;
-            Item.useTime = 9;
-            Item.useAnimation = 9;
+            Item.useTime = 4;
+            Item.useAnimation = 4;
             Item.width = 40;
             Item.height = 40;
             Item.autoReuse = true;
@@ -47,7 +47,6 @@ namespace MagusClass.Items.IceRod
             protected override int ManaCost => 5;
             protected override bool MultipleSpellsAllowed => true;
             protected override int[] ProjectileTypes => new int[] { ModContent.ProjectileType<IceRodSpawner>() };
-            protected override bool IsIceRod => true;
         }
     }
 }

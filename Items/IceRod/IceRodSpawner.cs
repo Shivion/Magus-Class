@@ -26,9 +26,9 @@ namespace MagusClass.Items.IceRod
         {
             base.AI();
 
-            if (Thrown(1f, false, false))
+            if (Projectile.ai[0] == 0 && Thrown(2f, false, false))
             {
-                Projectile.Kill();
+                PlaceBlock();
             }
 
             //Collision Check
@@ -42,7 +42,7 @@ namespace MagusClass.Items.IceRod
                 && Main.tileSolid[tile.TileType]
                 && !Main.tileSolidTop[tile.TileType])
             {
-                KillWithoutPlacing();
+                Kill(0);
             }
 
             //Visuals
@@ -60,12 +60,22 @@ namespace MagusClass.Items.IceRod
             }
         }
 
-        public void KillWithoutPlacing()
+        public override void Kill(int timeLeft)
         {
-            Kill(0);
+            Projectile.ai[2] = 1;
+            Projectile.alpha = 255;
+
+            int blockPositionX = (int)targetPosition.X / 16;
+            int blockPositionY = (int)targetPosition.Y / 16;
+            if (Main.tile[blockPositionX, blockPositionY].HasTile && Main.tile[blockPositionX, blockPositionY].TileType == ModContent.TileType<IceRodTile>())
+            {
+                WorldGen.KillTile(blockPositionX, blockPositionY);
+            }
+
+            base.Kill(Projectile.timeLeft);
         }
 
-        public override void Kill(int timeLeft)
+        private void PlaceBlock()
         {
             SoundEngine.PlaySound(in SoundID.Item27, Projectile.position);
             for (int num613 = 0; num613 < 10; num613++)
@@ -73,25 +83,19 @@ namespace MagusClass.Items.IceRod
                 Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
             }
 
-            if (Projectile.owner == Main.myPlayer && timeLeft > 0)
+            int blockPositionX = (int)targetPosition.X / 16;
+            int blockPositionY = (int)targetPosition.Y / 16;
+            if (Projectile.owner == Main.myPlayer && !Main.tile[blockPositionX, blockPositionY].HasTile && Vector2.Distance(Projectile.position, targetPosition) < 32f)
             {
-                int blockPositionX = (int)targetPosition.X / 16;
-                int blockPositionY = (int)targetPosition.Y / 16;
-                if (Main.tile[blockPositionX, blockPositionY].HasTile && Main.tile[blockPositionX, blockPositionY].TileType == ModContent.TileType<IceRodTile>())
-                {
-                    WorldGen.KillTile(blockPositionX, blockPositionY);
-                }
-                else
-                {
-                    IceRodTileEntity.nextOwner = Projectile.owner;
-                    WorldGen.PlaceTile(blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
-                    IceRodTileEntity advancedEntity = ModContent.GetInstance<IceRodTileEntity>();
-                    advancedEntity.Hook_AfterPlacement(blockPositionX, blockPositionY, ModContent.TileEntityType<IceRodTileEntity>(), 0, 0, 0);
-                }
+                WorldGen.PlaceTile(blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
+                Projectile.position = new Vector2(blockPositionX, blockPositionY) * 16;
+                Projectile.ai[0] = 1;
+                Projectile.alpha = 255;
             }
-            Projectile.ai[2] = 1;
-            Projectile.alpha = 255;
-            base.Kill(Projectile.timeLeft);
+            else
+            {
+                Kill(0);
+            }
         }
 
         public override bool ShouldUpdatePosition()
