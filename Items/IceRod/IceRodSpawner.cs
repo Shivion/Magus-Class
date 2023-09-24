@@ -110,7 +110,7 @@ namespace MagusClass.Items.IceRod
 
             int blockPositionX = (int)targetPosition.X / 16;
             int blockPositionY = (int)targetPosition.Y / 16;
-            if (Projectile.owner == Main.myPlayer && !Main.tile[blockPositionX, blockPositionY].HasTile && Vector2.Distance(Projectile.position, targetPosition) < 32f)
+            if (!Main.tile[blockPositionX, blockPositionY].HasTile && Vector2.Distance(Projectile.position, targetPosition) < 32f)
             {
                 WorldGen.PlaceTile(blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
                 Projectile.position = new Vector2(blockPositionX, blockPositionY) * 16 + new Vector2(4,4);
