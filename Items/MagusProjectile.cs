@@ -14,17 +14,18 @@ namespace MagusClass.Items
 
         protected Vector2 targetPosition;
 
-        private bool IsCulling
+        internal bool IsCulling
         {
             get => Projectile.ai[2] == 1;
             set => Projectile.ai[2] = value ? 1 : 0;
         }
 
-        private float TimeActive
+        internal float TimeActive
         {
             get => Projectile.localAI[2];
             set => Projectile.localAI[2] = value;
         }
+
         public override void SetStaticDefaults()
         {
 

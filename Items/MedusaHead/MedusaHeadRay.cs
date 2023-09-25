@@ -25,7 +25,7 @@ namespace MagusClass.Items.MedusaHead
         {
             float num887 = 20f;
             Projectile.localAI[0]++;
-            Projectile.alpha = (int)MathHelper.Lerp(0f, 255f, Projectile.localAI[0] / num887);
+            Projectile.alpha = (int)MathHelper.Lerp(0f, 150f, Projectile.localAI[0] / num887);
             int parentProjectile = (int)Projectile.ai[0];
             if (Projectile.localAI[0] >= num887 || parentProjectile < 0 || parentProjectile > 1000 || !Main.projectile[parentProjectile].active)
             {

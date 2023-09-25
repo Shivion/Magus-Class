@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace MagusClass.Items.IceRod
 {
@@ -41,6 +42,12 @@ namespace MagusClass.Items.IceRod
             else if(tile == null || tile.TileType != ModContent.TileType<IceRodTile>())
             {
                 Kill(0);
+            }
+            else
+            {
+                Projectile.friendly = false;
+                Projectile.width = 0;
+                Projectile.height = 0;
             }
 
 
@@ -87,6 +94,11 @@ namespace MagusClass.Items.IceRod
 
         public override void Kill(int timeLeft)
         {
+            if (timeLeft > 0 && Projectile.ai[0] == 1)
+            {
+
+            }
+
             Projectile.ai[2] = 1;
             Projectile.alpha = 255;
 
@@ -95,6 +107,10 @@ namespace MagusClass.Items.IceRod
             if (Main.tile[blockPositionX, blockPositionY].HasTile && Main.tile[blockPositionX, blockPositionY].TileType == ModContent.TileType<IceRodTile>())
             {
                 WorldGen.KillTile(blockPositionX, blockPositionY);
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, blockPositionX, blockPositionY);
+                }
             }
 
             base.Kill(Projectile.timeLeft);
@@ -113,11 +129,17 @@ namespace MagusClass.Items.IceRod
             if (!Main.tile[blockPositionX, blockPositionY].HasTile && Vector2.Distance(Projectile.position, targetPosition) < 32f)
             {
                 WorldGen.PlaceTile(blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 1, blockPositionX, blockPositionY, ModContent.TileType<IceRodTile>());
+                }
                 Projectile.position = new Vector2(blockPositionX, blockPositionY) * 16 + new Vector2(4,4);
                 Projectile.ai[0] = 1;
                 Projectile.alpha = 255;
                 Projectile.width = 0;
                 Projectile.height = 0;
+                Projectile.friendly = false;
+                Projectile.netUpdate = true;
             }
             else
             {
