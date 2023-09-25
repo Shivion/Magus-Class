@@ -34,6 +34,12 @@ namespace MagusClass.Items.MedusaHead
             KillExistingProjectiles();
             base.AI();
 
+            //Adjust the position a bit
+            if(TimeActive == 1)
+            {
+                Projectile.position -= new Vector2(Projectile.width, Projectile.height);
+            }
+
             bool flag2 = Projectile.ai[0] > 0f;
 
             if (Projectile.ai[0] > 0f)
