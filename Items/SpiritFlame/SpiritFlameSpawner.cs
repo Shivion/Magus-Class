@@ -52,7 +52,6 @@ namespace MagusClass.Items.SpiritFlame
                     {
                         if (attempts > 10)
                         {
-                            Main.NewText(attemptedPosition.ToString());
                             return;
                         }
                         attempts++;
