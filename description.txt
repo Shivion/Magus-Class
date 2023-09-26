@@ -1,3 +1,5 @@
 Please report any issues here: https://github.com/Shivion/Magus-Class/issues
 
-Magus Class currently adds an alternate version of around 30 of the mage weapons with a focus on area control. Each weapon will give a corrosponding buff similar to summons that can be removed to dismiss the active effect. The mana cost of each weapon is removed from your max mana for each active magus weapon.
+Magus Class currently adds an alternate version of around 30 of the mage weapons with a focus on area control by having the spells stay active while the player is free to switch weapons. Each weapon will give a corresponding buff similar to summons that can be removed to dismiss the active effect. The mana cost of each weapon is removed from your max mana while the weapon is active.
+
+I'm considering adding some accessories to expand the Magus a bit further, feel free to give suggestions.
