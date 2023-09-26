@@ -42,7 +42,7 @@ namespace MagusClass
 
         public static bool CheckForSentryCollison(int X, int Y)
         {
-            return !WorldGen.SolidTile2(X, Y) && !WorldGen.SolidTile2(X - 1, Y) && !WorldGen.SolidTile2(X + 1, Y);
+            return !WorldGen.SolidTile(X, Y) && !WorldGen.SolidTile(X - 1, Y) && !WorldGen.SolidTile(X + 1, Y);
         }
     }
 }
