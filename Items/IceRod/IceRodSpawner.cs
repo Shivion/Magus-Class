@@ -41,7 +41,7 @@ namespace MagusClass.Items.IceRod
             }
             else if(tile == null || tile.TileType != ModContent.TileType<IceRodTile>())
             {
-                Kill(0);
+                Projectile.Kill();
             }
             else
             {
@@ -54,13 +54,13 @@ namespace MagusClass.Items.IceRod
             //lava Check
             if (Projectile.lavaWet)
             {
-                Kill(0);
+                Projectile.Kill();
             }
 
             //Tile collide;
             if (tile != null && tile.HasUnactuatedTile && tile.TileType != ModContent.TileType<IceRodTile>() && Main.tileSolid[tile.TileType] && !Main.tileSolidTop[tile.TileType])
             {
-                Kill(0);
+                Projectile.Kill();
             }
 
             //Visuals
@@ -139,7 +139,7 @@ namespace MagusClass.Items.IceRod
             }
             else
             {
-                Kill(0);
+                Projectile.Kill();
             }
         }
 
