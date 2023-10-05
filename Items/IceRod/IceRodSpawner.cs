@@ -75,6 +75,7 @@ namespace MagusClass.Items.IceRod
                 int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.IceRod);
                 Main.dust[dust].velocity *= 0.3f;
                 Main.dust[dust].noGravity = false;
+                Projectile.alpha = 255;
                 Projectile.localAI[0] = 30;
             }
             else
@@ -92,13 +93,8 @@ namespace MagusClass.Items.IceRod
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-            if (timeLeft > 0 && Projectile.ai[0] == 1)
-            {
-
-            }
-
             Projectile.ai[2] = 1;
             Projectile.alpha = 255;
 
@@ -113,7 +109,7 @@ namespace MagusClass.Items.IceRod
                 }
             }
 
-            base.Kill(Projectile.timeLeft);
+            base.OnKill(Projectile.timeLeft);
         }
 
         private void PlaceBlock()

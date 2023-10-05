@@ -71,8 +71,4 @@ namespace MagusClass.Items.RainbowGun
             }
         }
     }
-
-
-
-
 }
